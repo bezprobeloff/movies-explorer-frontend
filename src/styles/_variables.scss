@@ -1,0 +1,14 @@
+$GREEN: #2BE080;
+$GRAY_TEXT: #A0A0A0;
+$GRAY_ELEMENT: #E8E8E8;
+$ORANGE: #FF6838;
+
+@mixin font_text($size, $lineHeight, $color: black, $weight: 400) {
+  font: {
+    style: normal;
+    weight: $weight;
+    size: $size;
+  }
+  line-height: calc($lineHeight / $size);
+  color: $color;
+}

@@ -1,0 +1,43 @@
+@import "../../styles/variables";
+
+.search-form {
+  display: grid;
+  grid-template-areas:
+    'search-input search-button'
+    'checkbox checkbox'
+  ;
+  column-gap: 10px;
+  margin-bottom: 10px;
+  padding-top: 80px;
+  border-bottom: 1px solid $GRAY_ELEMENT;
+
+  &__input {
+    padding: 13px;
+    box-sizing: border-box;
+    grid-area: search-input;
+    outline: none;
+    border: none;
+    background-color: #F9F9F9;
+    border-radius: 8px;
+    @include font_text(14px, 18px, $GRAY_TEXT);
+
+    &::placeholder {
+      @include font_text(14px, 18px, $GRAY_TEXT);
+    }
+  }
+
+  &__button {
+    grid-area: search-button;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    justify-self: end;
+    border-radius: 8px;
+    background-color: $ORANGE;
+    background-image: url("../../images/icon-loupe.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-position: center;
+    border: none;
+  }
+}
