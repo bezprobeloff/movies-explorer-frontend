@@ -1,0 +1,46 @@
+@import '../../styles/variables';
+
+.movies__card {
+  display: grid;
+  background-color: #FDFDFD;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+
+  &-info {
+    padding: 14px;
+    display: grid;
+    grid-template-areas:
+    'movie-name movie-button'
+    'movie-duration movie-button'
+    ;
+  }
+
+  &-name {
+    margin: 0;
+    padding-bottom: 9px;
+    grid-area: movie-name;
+    @include font_text(15px, 18px, black , 500);
+  }
+
+  &-duration {
+    margin: 0;
+    grid-area: movie-duration;
+    @include font_text(11px, 13px, $GRAY_TEXT);
+  }
+
+  &-button {
+    width: 30px;
+    height: 30px;
+    grid-area: movie-button;
+    align-self: center;
+    justify-self: end;
+    background-color: #F9F9F9;
+    border: none;
+    border-radius: 50%;
+  }
+
+  &-image {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 2/1.12;
+  }
+}
