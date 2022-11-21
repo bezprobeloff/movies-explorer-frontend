@@ -1,0 +1,15 @@
+@import '../../styles/variables';
+
+.navigation {
+  @media  screen and (min-width: $MOBILE) {
+    display: grid;
+  }
+  &__button-burger {
+    width: 40px;
+    height: 43px;
+    justify-self: end;
+    background-image: url(../../images/icon-burger.svg);
+    background-color: transparent;
+    border: none;
+  }
+}
