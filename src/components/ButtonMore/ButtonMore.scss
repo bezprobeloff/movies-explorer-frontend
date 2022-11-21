@@ -1,0 +1,10 @@
+@import "../../styles/variables";
+
+.button-more {
+  margin: 50px 10px 80px;
+  padding:11px 20px 9px;
+  border: none;
+  background-color: #F9F9F9;
+  border-radius: 6px;
+  @include font_text(12px, 15px, black, 500);
+}

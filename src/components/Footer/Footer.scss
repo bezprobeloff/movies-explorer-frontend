@@ -1,0 +1,30 @@
+@import '../../styles/variables';
+
+.footer {
+  display: grid;
+  padding: 0 10px 10px;
+
+  &__title {
+    margin: 0;
+    padding-top: 79px;
+    padding-bottom: 21px;
+    border-bottom: 1px solid $GRAY_ELEMENT;
+    text-align: center;
+    @include font_text(12px, 15px, $GRAY_TEXT);
+  }
+
+  &__nav {
+    padding-top: 30px;
+    display: grid;
+    row-gap: 12px;
+    @include font_text(12px, 15px);
+    text-align: center;
+  }
+
+  &__copyright {
+    margin: 0;
+    padding-top: 30px;
+    @include font_text(12px, 15px, $GRAY_TEXT);
+    text-align: center;
+  }
+}
