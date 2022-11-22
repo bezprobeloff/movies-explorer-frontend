@@ -2,15 +2,29 @@
 
 .footer {
   display: grid;
-  padding: 0 10px 10px;
+  padding: 0 10px;
+
+  @media screen and (min-width: $PAD){
+    padding: 0 30px;
+    grid-template-areas:
+    'footer-title footer-title'
+    'footer-copyright footer-nav'
+    ;
+  }
 
   &__title {
     margin: 0;
     padding-top: 79px;
     padding-bottom: 21px;
     border-bottom: 1px solid $GRAY_ELEMENT;
+    grid-area: footer-title;
     text-align: center;
     @include font_text(12px, 15px, $GRAY_TEXT);
+
+    @media screen and (min-width: $PAD){
+      padding-bottom: 20px;
+      @include font_text(13px, 16px, $GRAY_TEXT);
+    }
   }
 
   &__nav {
@@ -18,13 +32,32 @@
     display: grid;
     row-gap: 12px;
     @include font_text(12px, 15px);
+    grid-area: footer-nav;
     text-align: center;
+
+    @media screen and (min-width: $PAD){
+      padding-top: 20px;
+      column-gap: 20px;
+      grid-auto-columns: min-content;
+      grid-auto-flow: column;
+      justify-self: end;
+      @include font_text(13px, 16px);
+    }
   }
 
   &__copyright {
     margin: 0;
     padding-top: 30px;
+    padding-bottom: 10px;
+    grid-area: footer-copyright;
     @include font_text(12px, 15px, $GRAY_TEXT);
     text-align: center;
+
+    @media screen and (min-width: $PAD){
+      padding-top: 20px;
+      padding-bottom: 20px;
+      justify-self: start;
+      @include font_text(13px, 16px);
+    }
   }
 }

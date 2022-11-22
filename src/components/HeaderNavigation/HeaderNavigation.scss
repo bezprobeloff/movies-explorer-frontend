@@ -64,6 +64,7 @@
   }
 
   &__button-burger {
+    padding: 0;
     width: 40px;
     height: 43px;
     justify-self: end;
@@ -73,8 +74,12 @@
     background-repeat: no-repeat;
     border: none;
 
+    @media screen and (min-width: $PAD){
+      width: 44px;
+      height: 44px;
+    }
+
     &_type_close {
-      padding: 0;
       width: 58px;
       height: 58px;
       background-image: url(../../images/icon-cross.svg);

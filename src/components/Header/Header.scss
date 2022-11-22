@@ -1,12 +1,18 @@
+@import '../../styles/variables';
+
 .header {
   position: relative;
   width: 100%;
-  height: min-content;
-  padding: 14px 16px;
+  min-height: 74px;
+  padding: 0 16px;
   box-sizing: border-box;
   display: grid;
   grid-template-columns: auto 1fr;
-  align-items: baseline;
+  align-items: center;
+
+  @media screen and (min-width: $PAD){
+    padding: 0 30px;
+  }
 
   &__logo {
     width: 38px;
