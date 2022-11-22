@@ -1,15 +1,85 @@
 @import '../../styles/variables';
 
 .navigation {
-  @media  screen and (min-width: $MOBILE) {
-    display: grid;
+  display: grid;
+  background-color: transparent;
+
+  &_type_menu {
+    width: 100%;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    grid-template-rows: auto 1fr auto;
+    background-color: white;
   }
+
+  &__links {
+    padding-top: 87px;
+    display: grid;
+    row-gap: 24px;
+    align-content: start;
+
+    &_invisibled {
+      display: none;
+    }
+  }
+
+  &__link {
+    text-align: center;
+    @include font_text(18px, 22px, black, 500);
+  }
+
+  &__account {
+    position: relative;
+    min-height: 32px;
+    margin-top: 46px;
+    margin-bottom: 46px;
+    padding: 9.5px 36px 9.5px 11px;
+    justify-self: center;
+    @include font_text(13px, 12px, black, 500);
+    background: white;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+    border-radius: 40px;
+
+    &_invisibled {
+      display: none;
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 26px;
+      height: 26px;
+      top: 3px;
+      right: 3px;
+      background-color: #F9F9F9;
+      background-image: url(../../images/icon-man.svg);
+      background-size: 10.38px 10.68px;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 50%;
+    }
+  }
+
   &__button-burger {
     width: 40px;
     height: 43px;
     justify-self: end;
     background-image: url(../../images/icon-burger.svg);
+    background-size: cover;
     background-color: transparent;
+    background-repeat: no-repeat;
     border: none;
+
+    &_type_close {
+      padding: 0;
+      width: 58px;
+      height: 58px;
+      background-image: url(../../images/icon-cross.svg);
+      background-size: 30px;
+      background-position: center;
+    }
   }
 }
