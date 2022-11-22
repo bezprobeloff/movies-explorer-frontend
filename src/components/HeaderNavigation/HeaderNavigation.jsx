@@ -7,6 +7,9 @@ const HeaderNavigation = () => {
     ? ' navigation__button-burger_type_close'
     : '';
   const classNavigationMenu = isBurgerClose ? ' navigation_type_menu' : '';
+  const classNavigationContainerMenu = isBurgerClose
+    ? ' navigation__container_type_menu'
+    : '';
   const classNavigationLinksMenu = isBurgerClose
     ? ''
     : ' navigation__links_invisibled';
@@ -24,18 +27,20 @@ const HeaderNavigation = () => {
 
   return (
     <div className={`navigation${classNavigationMenu}`}>
-      <button
-        className={`navigation__button-burger${classBurgerMenu}`}
-        onClick={onButtonBurgerClick}
-      ></button>
-      <nav className={`navigation__links${classNavigationLinksMenu}`}>
-        <a className='navigation__link'>Главная</a>
-        <a className='navigation__link'>Фильмы</a>
-        <a className='navigation__link'>Сохранённые фильмы</a>
-      </nav>
-      <a className={`navigation__account${classNavigationAccountMenu}`}>
-        Аккаунт
-      </a>
+      <div className={`navigation__container${classNavigationContainerMenu}`}>
+        <button
+          className={`navigation__button-burger${classBurgerMenu}`}
+          onClick={onButtonBurgerClick}
+        ></button>
+        <nav className={`navigation__links${classNavigationLinksMenu}`}>
+          <a className='navigation__link'>Главная</a>
+          <a className='navigation__link'>Фильмы</a>
+          <a className='navigation__link'>Сохранённые фильмы</a>
+        </nav>
+        <a className={`navigation__account${classNavigationAccountMenu}`}>
+          Аккаунт
+        </a>
+      </div>
     </div>
   );
 };
