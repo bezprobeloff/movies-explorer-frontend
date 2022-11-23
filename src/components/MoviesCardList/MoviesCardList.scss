@@ -14,4 +14,11 @@
     column-gap: 30px;
     row-gap: 36px;
   }
+
+  @media screen and (min-width: $DESKTOP){
+    padding: 70px 70px 30px;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 24px;
+    row-gap: 30px;
+  }
 }

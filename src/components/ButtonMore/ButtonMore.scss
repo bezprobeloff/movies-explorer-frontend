@@ -11,4 +11,8 @@
   @media screen and (min-width: $PAD){
     margin: 50px 30px 80px;
   }
+
+  @media screen and (min-width: $DESKTOP){
+    margin: 50px 70px 80px;
+  }
 }

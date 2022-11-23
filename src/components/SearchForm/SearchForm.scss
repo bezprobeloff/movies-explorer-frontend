@@ -15,7 +15,10 @@
 
   @media screen and (min-width: $PAD){
     margin: 0 30px 10px;
+  }
 
+  @media screen and (min-width: $DESKTOP){
+    margin: 0 70px 10px;
   }
 
   &__input {
