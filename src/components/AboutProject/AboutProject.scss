@@ -1,0 +1,22 @@
+.about-project {
+  &__points {
+    display: grid;
+    margin: 0;
+    padding: 60px 0 0;
+    row-gap: 56px;
+    list-style-type: none;
+  }
+
+  &__point {
+
+    &-title {
+      padding-top: 0;
+      padding-bottom: 16px;
+      border-bottom: none;
+    }
+
+    &-description {
+
+    }
+  }
+}

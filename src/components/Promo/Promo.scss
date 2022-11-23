@@ -1,0 +1,40 @@
+@import '../../styles/variables';
+
+.promo {
+  display: grid;
+  padding: 0 10px 0;
+  justify-items: center;
+  background-color: $BLUE;
+
+  &__logo {
+    margin-top: 70px;
+    width: 210px;
+    height: 206px;
+  }
+
+  &__title {
+    margin-top: 44px;
+    margin-bottom: 0;
+    @include font_text(30px, 38px, white);
+    text-align: center;
+    letter-spacing: -0.04em;
+  }
+
+  &__text {
+    margin-top: 24px;
+    margin-bottom: 0;
+    padding: 0 18px;
+    @include font_text(13px, 16px, rgba(white, 0.5));
+    text-align: center;
+  }
+
+  &__link {
+    margin-top: 79px;
+    margin-bottom: 30px;
+    padding: 10px 20px;
+    @include font_text(12px, 16px, white, 500);
+    border: 1px solid rgba(white, 0.6);
+    border-radius: 3px;
+    text-align: center;
+  }
+}
