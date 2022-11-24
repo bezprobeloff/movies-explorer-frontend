@@ -13,7 +13,7 @@
     border-bottom: 1px solid black;
   }
 
-  &_description {
+  &__description {
     margin: 0;
     @include font_text(11px, 16px);
   }

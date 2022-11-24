@@ -1,0 +1,38 @@
+@import '../../styles/variables';
+
+.techs {
+  &__subtitle {
+    margin: 60px 0 0;
+    @include font_text(30px, 36px);
+    letter-spacing: -0.04em;
+    text-align: center;
+  }
+
+  &__description {
+    margin-top: 25px;
+    letter-spacing: -0.04em;
+    text-align: center;
+  }
+
+  &__list {
+    display: grid;
+    margin: 0;
+    padding: 50px 0 0;
+    row-gap: 10px;
+    column-gap: 10px;
+    justify-content: center;
+    grid-template-columns: repeat(2, auto);
+    list-style-type: none;
+  }
+
+  &__item {
+    padding: 21px 10px;
+    min-width: 84px;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: $GRAY_ELEMENT;
+    border-radius: 10px;
+    @include font_text(12px, 15px);
+    letter-spacing: -0.04em;
+  }
+}
