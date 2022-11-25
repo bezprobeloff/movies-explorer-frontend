@@ -1,0 +1,42 @@
+@import '../../styles/variables';
+
+.portfolio {
+  display: grid;
+  padding: 0 14px 70px;
+
+  &__title {
+    margin: 0;
+    @include font_text(14px, 20px, $GRAY_TEXT);
+  }
+
+  &__links {
+    display: grid;
+    padding-top: 40px;
+    row-gap: 20px;
+  }
+
+  &__link {
+    position: relative;
+    padding-bottom: 19px;
+    @include font_text(18px, 28px);
+    letter-spacing: -0.04em;
+    border-bottom: 1px solid #E6E6E6;
+
+    &::before {
+      content: '';
+      width: 12px;
+      height: 11px;
+      position: absolute;
+      top: 6px;
+      right: 3px;
+      background-image: url("../../images/icon-arrow-up.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+  }
+}
