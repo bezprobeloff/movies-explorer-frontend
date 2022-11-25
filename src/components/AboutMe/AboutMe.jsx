@@ -6,7 +6,7 @@ import myPhoto from '../../images/my-photo.png';
 const AboutMe = () => {
   return (
     <section className='project about-me'>
-      <h2 className='project__title'>Студент</h2>
+      <h2 className='project__title about-me__title'>Студент</h2>
       <img src={myPhoto} className='about-me__photo' alt='Мое фото' />
       <h3 className='about-me__name'>Виталий</h3>
       <p className='about-me__job'>Фронтенд-разработчик, 30 лет</p>

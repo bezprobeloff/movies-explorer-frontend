@@ -6,10 +6,20 @@
   justify-items: center;
   background-color: $BLUE;
 
+  @media screen  and (min-width: $PAD){
+    padding: 0 44px 0;
+  }
+
   &__logo {
     margin-top: 70px;
     width: 210px;
     height: 206px;
+
+    @media screen and (min-width: $PAD){
+      margin-top: 140px;
+      width: 310px;
+      height: 304px;
+    }
   }
 
   &__title {
@@ -18,6 +28,11 @@
     @include font_text(30px, 38px, white);
     text-align: center;
     letter-spacing: -0.04em;
+
+    @media screen and (min-width: $PAD) {
+      margin-top: 48px;
+      @include font_text(40px, 50px, white);
+    }
   }
 
   &__text {
@@ -26,6 +41,10 @@
     padding: 0 18px;
     @include font_text(13px, 16px, rgba(white, 0.5));
     text-align: center;
+
+    @media screen and (min-width: $PAD){
+      max-width: 260px;
+    }
   }
 
   &__link {
@@ -36,5 +55,10 @@
     border: 1px solid rgba(white, 0.6);
     border-radius: 3px;
     text-align: center;
+
+    @media screen and (min-width: $PAD){
+      margin-top: 89px;
+      margin-bottom: 75px;
+    }
   }
 }

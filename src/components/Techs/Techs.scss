@@ -1,17 +1,33 @@
 @import '../../styles/variables';
 
 .techs {
+
+  @media screen and (min-width: $PAD){
+    background-color: #F5F5F5;
+  }
+
   &__subtitle {
     margin: 60px 0 0;
     @include font_text(30px, 36px);
     letter-spacing: -0.04em;
     text-align: center;
+
+    @media screen and (min-width: $PAD){
+      margin: 80px 0 0;
+      @include font_text(50px, 58px);
+    }
   }
 
   &__description {
     margin-top: 25px;
     letter-spacing: -0.04em;
     text-align: center;
+    justify-self: center;
+
+    @media screen and (min-width: $PAD){
+      margin-top: 22px;
+      max-width: 460px;
+    }
   }
 
   &__list {
@@ -23,6 +39,11 @@
     justify-content: center;
     grid-template-columns: repeat(2, auto);
     list-style-type: none;
+
+    @media screen and (min-width: $PAD){
+      padding: 83px 0 0;
+      grid-template-columns: repeat(7, auto);
+    }
   }
 
   &__item {
