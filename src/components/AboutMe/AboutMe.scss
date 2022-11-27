@@ -10,15 +10,14 @@
     align-items: start;
     grid-template-areas:
     'me-title me-title'
-    'me-name me-photo'
-    'me-job me-photo'
-    'me-description me-photo'
-    'me-link-repo me-photo'
+    'me-info me-photo'
     ;
   }
 
   &__title {
-    grid-area: me-title;
+    @media screen  and (min-width: $PAD){
+      grid-area: me-title;
+    }
   }
 
   &__photo {
@@ -27,12 +26,23 @@
     object-fit: cover;
     aspect-ratio: 292/352;
     border-radius: 10px;
-    grid-area: me-photo;
 
     @media screen and (min-width: $PAD){
       width: 255px;
       margin-top: 66px;
       aspect-ratio: 255/307;
+      grid-area: me-photo;
+    }
+  }
+
+  &__info {
+    display: grid;
+    @media screen  and (min-width: $PAD){
+      grid-template-rows: repeat(3, auto);
+      grid-auto-rows: 1fr;
+      min-height: 100%;
+      align-content: start;
+      grid-area: me-info;
     }
   }
 
@@ -40,7 +50,6 @@
     margin: 40px 0 0;
     @include font_text(30px, 36px);
     letter-spacing: -0.04em;
-    grid-area: me-name;
 
     @media screen and (min-width: $PAD){
       margin: 67px 0 0;
@@ -51,7 +60,6 @@
   &__job {
     margin: 20px 0 0;
     @include font_text(11px, 16px, black, 500);
-    grid-area: me-job;
 
     @media screen and (min-width: $PAD){
       margin: 16px 0 0;
@@ -61,17 +69,15 @@
 
   &__description {
     margin: 20px 0 0;
-    grid-area: me-description;
   }
 
   &__link-repo {
     padding-top: 40px;
     @include font_text(14px, 17px, black, 500);
-    grid-area: me-link-repo;
 
     @media screen  and (min-width: $PAD){
-      padding-top: 10px;
       align-self: end;
+      padding-top: 10px;
     }
   }
 }
