@@ -8,13 +8,13 @@ import Portfolio from '../Portfolio/Portfolio';
 
 const Main = () => {
   return (
-    <section>
+    <>
       <Promo></Promo>
       <AboutProject></AboutProject>
       <Techs></Techs>
       <AboutMe></AboutMe>
       <Portfolio></Portfolio>
-    </section>
+    </>
   );
 };
 

@@ -1,11 +1,19 @@
 @import './variables';
 
 .project {
+  width: 100%;
   display: grid;
   padding: 0 18px 70px;
+  justify-self: center;
+  box-sizing: border-box;
 
   @media screen and (min-width: $PAD){
     padding: 0 50px 90px;
+  }
+
+  @media screen and (min-width: $DESKTOP){
+    width: 1280px;
+    padding: 0 70px 110px;
   }
 
   &__title {
@@ -21,6 +29,10 @@
       padding-bottom: 23px;
       @include font_text(22px, 27px);
     }
+
+    @media screen and (min-width: $DESKTOP){
+      padding-top: 110px;
+    }
   }
 
   &__description {
@@ -29,6 +41,10 @@
 
     @media screen and (min-width: $PAD){
       @include font_text(12px, 18px);
+    }
+
+    @media screen and (min-width: $DESKTOP){
+      @include font_text(14px, 20px);
     }
   }
 }

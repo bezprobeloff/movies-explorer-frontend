@@ -18,14 +18,16 @@ const Techs = () => {
     </li>
   ));
   return (
-    <section className='project techs'>
-      <h2 className='project__title'>Технологии</h2>
-      <h3 className='techs__subtitle'>7 технологий</h3>
-      <p className='project__description techs__description'>
-        На курсе веб-разработки мы освоили технологии, которые применили в
-        дипломном проекте.
-      </p>
-      <ul className='techs__list'>{techElements}</ul>
+    <section className='techs'>
+      <div className='project techs__container'>
+        <h2 className='project__title techs__title'>Технологии</h2>
+        <h3 className='techs__subtitle'>7 технологий</h3>
+        <p className='project__description techs__description'>
+          На курсе веб-разработки мы освоили технологии, которые применили в
+          дипломном проекте.
+        </p>
+        <ul className='techs__list'>{techElements}</ul>
+      </div>
     </section>
   );
 };

@@ -1,9 +1,21 @@
 @import '../../styles/variables';
 
 .techs {
-
+  display: grid;
   @media screen and (min-width: $PAD){
     background-color: #F5F5F5;
+  }
+
+  &__container {
+    @media screen and (min-width: $DESKTOP){
+      padding-bottom: 100px;
+    }
+  }
+
+  &__title {
+    @media screen and (min-width: $DESKTOP){
+      padding-top: 100px;
+    }
   }
 
   &__subtitle {
@@ -16,6 +28,10 @@
       margin: 80px 0 0;
       @include font_text(50px, 58px);
     }
+
+    @media screen and (min-width: $DESKTOP){
+      margin: 90px 0 0;
+    }
   }
 
   &__description {
@@ -27,6 +43,10 @@
     @media screen and (min-width: $PAD){
       margin-top: 22px;
       max-width: 460px;
+    }
+
+    @media screen and (min-width: $DESKTOP){
+      margin-top: 26px;
     }
   }
 
@@ -44,6 +64,10 @@
       padding: 83px 0 0;
       grid-template-columns: repeat(7, auto);
     }
+
+    @media screen and (min-width: $DESKTOP){
+      padding: 100px 0 0;
+    }
   }
 
   &__item {
@@ -55,5 +79,10 @@
     border-radius: 10px;
     @include font_text(12px, 15px);
     letter-spacing: -0.04em;
+
+    @media screen and (min-width: $DESKTOP){
+      min-width: 90px;
+      @include font_text(14px, 17px);
+    }
   }
 }

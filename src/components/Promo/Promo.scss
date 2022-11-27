@@ -2,21 +2,28 @@
 
 .promo {
   display: grid;
-  padding: 0 10px 0;
   justify-items: center;
-  justify-content: center;
-  background-color: $BLUE;
   box-sizing: border-box;
+  background-color: $BLUE;
 
-  @media screen  and (min-width: $PAD){
-    padding: 0 44px 0;
-  }
+  &__container {
+    display: grid;
+    padding: 0 10px 0;
+    justify-items: center;
+    justify-content: center;
+    box-sizing: border-box;
 
-  @media screen and (min-width: $DESKTOP) {
-    min-height: 574px;
-    padding: 75px 0 50px;
-    grid-template-columns: repeat(2, auto);
-    column-gap: 190px;
+    @media screen  and (min-width: $PAD){
+      padding: 0 44px 0;
+    }
+
+    @media screen and (min-width: $DESKTOP) {
+      width: 1280px;
+      min-height: 574px;
+      padding: 75px 70px 50px;
+      grid-template-columns: repeat(2, auto);
+      justify-content: space-between;
+    }
   }
 
   &__info {

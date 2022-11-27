@@ -8,6 +8,10 @@
     padding: 0 50px 90px;
   }
 
+  @media screen and (min-width: $DESKTOP){
+    padding: 0 70px 125px;
+  }
+
   &__title {
     margin: 0;
     @include font_text(14px, 20px, $GRAY_TEXT);
@@ -36,6 +40,10 @@
 
     @media screen  and (min-width: $PAD){
       @include font_text(28px, 50px);
+    }
+
+    @media screen  and (min-width: $DESKTOP){
+      @include font_text(30px, 50px);
     }
 
     &::before {

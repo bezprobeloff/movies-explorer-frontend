@@ -14,6 +14,11 @@
       row-gap: 30px;
       grid-template-columns: repeat(2, 1fr);
     }
+
+    @media screen and (min-width: $DESKTOP) {
+      column-gap: 40px;
+      row-gap: 40px;
+    }
   }
 
   &__point {
@@ -25,6 +30,10 @@
       @media screen and (min-width: $PAD){
         padding-bottom: 22px;
         @include font_text(20px, 24px);
+      }
+
+      @media screen and (min-width: $DESKTOP){
+        padding-bottom: 26px;
       }
     }
 
@@ -41,6 +50,11 @@
     @media screen and (min-width: $PAD){
       margin: 93px 0 0;
       grid-template-columns: 140px 1fr;
+    }
+
+    @media screen and (min-width: $DESKTOP){
+      margin: 110px 0 0;
+      grid-template-columns: 228px 1fr;
     }
   }
 

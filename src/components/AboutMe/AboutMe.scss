@@ -2,16 +2,31 @@
 
 .about-me {
   display: grid;
-  padding: 0 14px 70px;
+
+  @media screen
+    and (min-width: $MOBILE)
+    and (max-width: $PAD_WITHOUT){
+    padding: 0 14px 70px;
+  }
+
+  @media screen
+  and (min-width: $PAD)
+  and (max-width: $DESKTOP_WITHOUT){
+    padding: 0 50px 90px;
+  }
 
   @media screen and (min-width: $PAD){
-    padding: 0 50px 90px;
     column-gap: 49px;
     align-items: start;
     grid-template-areas:
     'me-title me-title'
     'me-info me-photo'
     ;
+  }
+
+  @media screen and (min-width: $DESKTOP){
+    padding-bottom: 100px;
+    justify-content: space-between;
   }
 
   &__title {
@@ -33,6 +48,11 @@
       aspect-ratio: 255/307;
       grid-area: me-photo;
     }
+
+    @media screen and (min-width: $DESKTOP){
+      width: 270px;
+      aspect-ratio: 270/327;
+    }
   }
 
   &__info {
@@ -43,6 +63,10 @@
       min-height: 100%;
       align-content: start;
       grid-area: me-info;
+    }
+
+    @media screen  and (min-width: $DESKTOP){
+      max-width: 600px;
     }
   }
 
@@ -55,6 +79,10 @@
       margin: 67px 0 0;
       @include font_text(40px, 40px);
     }
+
+    @media screen and (min-width: $DESKTOP){
+      @include font_text(50px, 58px);
+    }
   }
 
   &__job {
@@ -65,10 +93,20 @@
       margin: 16px 0 0;
       @include font_text(12px, 18px);
     }
+
+    @media screen and (min-width: $DESKTOP){
+      margin: 18px 0 0;
+      @include font_text(18px, 20px);
+    }
   }
 
   &__description {
     margin: 20px 0 0;
+
+    @media screen and (min-width: $DESKTOP){
+      margin: 26px 0 0;
+      @include font_text(14px, 22px);
+    }
   }
 
   &__link-repo {
