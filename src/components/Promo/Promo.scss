@@ -4,10 +4,31 @@
   display: grid;
   padding: 0 10px 0;
   justify-items: center;
+  justify-content: center;
   background-color: $BLUE;
+  box-sizing: border-box;
 
   @media screen  and (min-width: $PAD){
     padding: 0 44px 0;
+  }
+
+  @media screen and (min-width: $DESKTOP) {
+    min-height: 574px;
+    padding: 75px 0 50px;
+    grid-template-columns: repeat(2, auto);
+    column-gap: 190px;
+  }
+
+  &__info {
+    display: grid;
+    justify-items: center;
+
+    @media screen and (min-width: $DESKTOP) {
+      align-content: start;
+      grid-template-rows: repeat(2, auto) 1fr;
+      max-width: 640px;
+      justify-items: start;
+    }
   }
 
   &__logo {
@@ -19,6 +40,11 @@
       margin-top: 140px;
       width: 310px;
       height: 304px;
+    }
+
+    @media screen and (min-width: $DESKTOP) {
+      margin-top: 0;
+      order: 1;
     }
   }
 
@@ -33,6 +59,12 @@
       margin-top: 48px;
       @include font_text(40px, 50px, white);
     }
+
+    @media screen and (min-width: $DESKTOP) {
+      margin-top: 0;
+      text-align: start;
+      @include font_text(50px, 58px, white);
+    }
   }
 
   &__text {
@@ -45,9 +77,17 @@
     @media screen and (min-width: $PAD){
       max-width: 260px;
     }
+
+    @media screen and (min-width: $DESKTOP){
+      margin-top: 36px;
+      padding: 0;
+      max-width: 310px;
+      text-align: start;
+    }
   }
 
   &__link {
+    width: fit-content;
     margin-top: 79px;
     margin-bottom: 30px;
     padding: 10px 20px;
@@ -59,6 +99,12 @@
     @media screen and (min-width: $PAD){
       margin-top: 89px;
       margin-bottom: 75px;
+    }
+
+    @media screen and (min-width: $DESKTOP){
+      align-self: end;
+      margin-top: 0px;
+      margin-bottom: 25px;
     }
   }
 }
