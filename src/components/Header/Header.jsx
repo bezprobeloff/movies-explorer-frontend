@@ -1,13 +1,13 @@
 import React from 'react';
 import './Header.scss';
 import HeaderNavigation from '../HeaderNavigation/HeaderNavigation';
-import logo from '../../images/logo.svg';
+import HeaderLogo from '../HeaderLogo/HeaderLogo';
 
 const Header = () => {
   return (
     <header className='header'>
-      <img src={logo} className='header__logo' alt='Логотип сайта' />
-      <HeaderNavigation></HeaderNavigation>
+      <HeaderLogo />
+      <HeaderNavigation />
     </header>
   );
 };

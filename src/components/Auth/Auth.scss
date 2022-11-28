@@ -1,0 +1,24 @@
+@import '../../styles/variables';
+
+.auth {
+  display: grid;
+
+  &__inputs {
+    padding-bottom: 20px;
+    grid-area: auth-inputs;
+  }
+
+  &__form {
+    display: grid;
+    padding: 0 30px;
+    min-height: calc(100vh - 74px);
+    align-content: start;
+    grid-template-areas:
+    "auth-title"
+    "auth-inputs"
+    "."
+    "auth-submit"
+    ;
+    grid-template-rows: repeat(2, auto) 1fr auto;
+  }
+}

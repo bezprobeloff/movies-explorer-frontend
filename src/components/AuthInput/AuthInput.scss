@@ -1,0 +1,37 @@
+@import '../../styles/variables';
+
+.auth {
+  &__input-container {
+    display: grid;
+    position: relative;
+    row-gap: 19px;
+    box-sizing: border-box;
+    @include font_text(11px, 13px, black, 500);
+  }
+
+  &__label {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 0 0 16px;
+    font-weight: 400;
+    text-align: right;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid $GRAY_ELEMENT;
+  }
+
+  &__input-container:last-child &__input {
+    border: none;
+  }
+
+  &__input-error {
+
+  }
+
+}

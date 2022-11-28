@@ -6,6 +6,8 @@ import Footer from '../Footer/Footer';
 import { Route, Switch } from 'react-router-dom';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Main from '../Main/Main';
+import Profile from '../Profile/Profile';
+import Auth from '../Auth/Auth';
 
 const App = () => {
   return (
@@ -21,7 +23,11 @@ const App = () => {
         <Route path='/saved-movies'>
           <SavedMovies></SavedMovies>
         </Route>
-        <Route path='/profile'></Route>
+        <Route path='/profile'>
+          <Auth>
+            <Profile></Profile>
+          </Auth>
+        </Route>
         <Route path='/signin'></Route>
         <Route path='/signup'></Route>
       </Switch>

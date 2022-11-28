@@ -7,6 +7,10 @@
     background-color: #FAFAFA;
   }
 
+  &_disabled {
+    display: none;
+  }
+
   &__container {
     display: grid;
     padding: 0 10px;

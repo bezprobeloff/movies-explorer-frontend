@@ -1,0 +1,29 @@
+@import '../../styles/variables';
+
+.auth {
+  &__submit-container {
+    display: grid;
+    grid-area: auth-submit;
+  }
+
+  &__button-submit {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    @include font_text(12px, 15px);
+  }
+
+  &__text {
+    display: grid;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    @include font_text(12px, 15px);
+  }
+
+  &__link {
+    padding: 16px 0 40px;
+    color: $PINK;
+    font-weight: 500;
+  }
+}
