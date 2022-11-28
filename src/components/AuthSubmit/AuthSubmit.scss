@@ -3,27 +3,48 @@
 .auth {
   &__submit-container {
     display: grid;
+    margin-bottom: 30px;
     grid-area: auth-submit;
+
+    &_type_profile {
+      margin-bottom: 40px;
+    }
   }
 
   &__button-submit {
-    padding: 0;
+    padding: 15px;
+    margin-bottom: 14px;
     border: none;
-    background-color: transparent;
-    @include font_text(12px, 15px);
+    border-radius: 3px;
+    background-color: $ORANGE;
+    @include font_text(12px, 15px, white, 500);
+
+    &_type_profile {
+      padding: 0;
+      border: none;
+      border-radius: 0;
+      background-color: transparent;
+      @include font_text(12px, 15px);
+    }
   }
 
   &__text {
-    display: grid;
     width: 100%;
     margin: 0;
     text-align: center;
-    @include font_text(12px, 15px);
+    @include font_text(12px, 15px, $GRAY_TEXT);
+
+    &_type_profile {
+      @include font_text(12px, 15px);
+    }
   }
 
   &__link {
-    padding: 16px 0 40px;
-    color: $PINK;
+    color: $ORANGE;
     font-weight: 500;
+
+    &_type_profile {
+      color: $PINK;
+    }
   }
 }

@@ -1,10 +1,11 @@
 import React from 'react';
 import './Auth.scss';
 
-const Auth = ({ children }) => {
+const Auth = ({ children, isProfile = false }) => {
+  const classForm = `auth__form${isProfile ? ' auth__form_type_profile' : ''}`;
   return (
     <section className='auth'>
-      <form className='auth__form' action='form' noValidate>
+      <form className={classForm} action='form' noValidate>
         {children}
       </form>
     </section>

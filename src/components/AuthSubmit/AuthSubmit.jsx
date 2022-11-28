@@ -1,15 +1,29 @@
 import React from 'react';
 import './AuthSubmit.scss';
 
-const AuthSubmit = ({ textButton, textPreLink, textLink }) => {
+const AuthSubmit = ({
+  textButton,
+  textPreLink,
+  textLink,
+  isProfile = false,
+}) => {
+  const classContainer = `auth__submit-container${
+    isProfile ? ' auth__submit-container_type_profile' : ''
+  }`;
+  const classButton = `auth__button-submit${
+    isProfile ? ' auth__button-submit_type_profile' : ''
+  }`;
+  const classText = `auth__text${isProfile ? ' auth__text_type_profile' : ''}`;
+  const classLink = `auth__link${isProfile ? ' auth__link_type_profile' : ''}`;
+
   return (
-    <div className='auth__submit-container'>
-      <button className='auth__button-submit' type='button'>
+    <div className={classContainer}>
+      <button className={classButton} type='button'>
         {textButton}
       </button>
-      <p className='auth__text'>
+      <p className={classText}>
         {textPreLink}
-        <a className='auth__link'>{textLink}</a>
+        <a className={classLink}>{textLink}</a>
       </p>
     </div>
   );

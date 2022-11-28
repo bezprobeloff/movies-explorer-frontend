@@ -24,9 +24,9 @@ const Register = () => {
         />
       </div>
       <AuthSubmit
-        textButton='Редактировать'
-        textPreLink=''
-        textLink='Выйти из аккаунта'
+        textButton='Зарегистрироваться'
+        textPreLink='Уже зарегистрированы? '
+        textLink='Войти'
       />
     </>
   );

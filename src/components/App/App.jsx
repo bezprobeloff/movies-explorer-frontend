@@ -26,7 +26,7 @@ const App = () => {
           <SavedMovies></SavedMovies>
         </Route>
         <Route path='/profile'>
-          <Auth>
+          <Auth isProfile={true}>
             <Profile></Profile>
           </Auth>
         </Route>

@@ -4,34 +4,55 @@
   &__input-container {
     display: grid;
     position: relative;
-    row-gap: 19px;
     box-sizing: border-box;
     @include font_text(11px, 13px, black, 500);
+
+    &_type_profile {
+    }
   }
 
   &__label {
-    position: absolute;
-    top: 0;
-    left: 0;
+    @include font_text(10px, 12px, $GRAY_TEXT);
+    margin-bottom: 5px;
+
+    &_type_profile {
+      margin: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      @include font_text(11px, 13px, black, 500);
+    }
   }
 
   &__input {
     width: 100%;
-    padding: 0 0 16px;
-    font-weight: 400;
-    text-align: right;
+    padding: 0 0 10px;
+    @include font_text(14px, 17px);
     border-top: none;
     border-left: none;
     border-right: none;
     border-bottom: 1px solid $GRAY_ELEMENT;
+
+    &_type_profile {
+      padding: 0 0 17px;
+      text-align: right;
+      @include font_text(11px, 13px);
+    }
   }
 
-  &__input-container:last-child &__input {
+  &__input-container_type_profile:last-child &__input {
     border: none;
+    padding: 0;
   }
 
   &__input-error {
+    padding-top: 6px;
+    min-height: 18px;
+    box-sizing: border-box;
+    @include font_text(10px, 12px, $PINK);
 
+    &_type_profile {
+      text-align: right;
+    }
   }
-
 }

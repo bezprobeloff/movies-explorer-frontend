@@ -7,9 +7,8 @@ import AuthSubmit from '../AuthSubmit/AuthSubmit';
 const Login = () => {
   return (
     <>
-      <AuthTitle title={`Добро пожаловать!`} />
+      <AuthTitle title={`Рады видеть!`} />
       <div className='auth__inputs'>
-        <AuthInput name='Имя' idName='name' type='text' value={'Виталий'} />
         <AuthInput
           name='E-mail'
           idName='email'
@@ -24,9 +23,9 @@ const Login = () => {
         />
       </div>
       <AuthSubmit
-        textButton='Редактировать'
-        textPreLink=''
-        textLink='Выйти из аккаунта'
+        textButton='Войти'
+        textPreLink='Ещё не зарегистрированы? '
+        textLink='Регистрация'
       />
     </>
   );
