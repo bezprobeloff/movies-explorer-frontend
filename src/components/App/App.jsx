@@ -8,6 +8,8 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Main from '../Main/Main';
 import Profile from '../Profile/Profile';
 import Auth from '../Auth/Auth';
+import Login from '../Login/Login';
+import Register from '../Register/Register';
 
 const App = () => {
   return (
@@ -28,8 +30,16 @@ const App = () => {
             <Profile></Profile>
           </Auth>
         </Route>
-        <Route path='/signin'></Route>
-        <Route path='/signup'></Route>
+        <Route path='/signin'>
+          <Auth>
+            <Login></Login>
+          </Auth>
+        </Route>
+        <Route path='/signup'>
+          <Auth>
+            <Register />
+          </Auth>
+        </Route>
       </Switch>
       <Footer></Footer>
     </div>

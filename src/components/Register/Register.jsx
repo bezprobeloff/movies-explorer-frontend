@@ -1,20 +1,25 @@
 import React from 'react';
-import './Profile.scss';
-import '../Auth/Auth.scss';
+import './Register.scss';
 import AuthTitle from '../AuthTitle/AuthTitle';
 import AuthInput from '../AuthInput/AuthInput';
 import AuthSubmit from '../AuthSubmit/AuthSubmit';
 
-const Profile = () => {
+const Register = () => {
   return (
     <>
-      <AuthTitle title={`Привет, Виталий!`} />
+      <AuthTitle title={`Добро пожаловать!`} />
       <div className='auth__inputs'>
         <AuthInput name='Имя' idName='name' type='text' value={'Виталий'} />
         <AuthInput
           name='E-mail'
           idName='email'
           type='email'
+          value={'pochta@yandex.ru'}
+        />
+        <AuthInput
+          name='Пароль'
+          idName='password'
+          type='password'
           value={'pochta@yandex.ru'}
         />
       </div>
@@ -27,4 +32,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Register;
