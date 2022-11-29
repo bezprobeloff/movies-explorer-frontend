@@ -1,9 +1,9 @@
-import React from 'react';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import './App.scss';
 import Header from '../Header/Header';
 import Movies from '../Movies/Movies';
 import Footer from '../Footer/Footer';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Main from '../Main/Main';
 import Profile from '../Profile/Profile';
@@ -12,8 +12,23 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 
 const App = () => {
+  const location = useLocation();
+  const [isTypeAuth, setIsTypeAuth] = useState(false);
+  const [isFooterDisable, setIsFooterDisable] = useState(false);
+  const typesAuth = ['/signin', '/signup'];
+  const footersDisabled = ['/signin', '/signup', '/profile'];
+  const classApp = `App${isTypeAuth ? ' App_type_auth' : ''}`;
+
+  useEffect(() => {
+    if (typesAuth.includes(location.pathname)) {
+      setIsTypeAuth(true);
+    }
+    if (footersDisabled.includes(location.pathname)) {
+      setIsFooterDisable(true);
+    }
+  }, [location.pathname]);
   return (
-    <div className='App'>
+    <div className={classApp}>
       <Header></Header>
       <Switch>
         <Route exact path='/'>
@@ -41,7 +56,7 @@ const App = () => {
           </Auth>
         </Route>
       </Switch>
-      <Footer></Footer>
+      {isFooterDisable ? '' : <Footer></Footer>}
     </div>
   );
 };

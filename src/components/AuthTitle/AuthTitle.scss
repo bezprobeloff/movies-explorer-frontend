@@ -8,8 +8,22 @@
     text-align: center;
     @include font_text(24px, 29px, black, 500);
 
+    @media screen and (min-width: $PAD){
+      padding: 40px 0;
+      text-align: start;
+    }
+
     &_type_profile {
       padding: 70px 0 80px;
+
+      @media screen and (min-width: $PAD){
+        padding: 236px 0 96px;
+        text-align: center;
+      }
+
+      @media screen and (min-width: $DESKTOP){
+        padding: 75px 0 122px;
+      }
     }
   }
 }

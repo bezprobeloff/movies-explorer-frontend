@@ -3,6 +3,10 @@
 .auth {
   display: grid;
 
+  @media screen and (min-width: $PAD){
+    justify-content: center;
+  }
+
   &__form {
     display: grid;
     padding: 0 30px;
@@ -16,8 +20,23 @@
     ;
     grid-template-rows: repeat(2, auto) 1fr auto;
 
+    @media screen and (min-width: $PAD){
+      width: 396px;
+      min-height: 0;
+      padding: 0;
+    }
+
     &_type_profile {
       min-height: calc(100vh - 74px);
+
+      @media screen and (min-width: $PAD){
+        width: 410px;
+        min-height: 720px;
+      }
+
+      @media screen and (min-width: $DESKTOP){
+        min-height: 596px;
+      }
     }
   }
 
@@ -26,6 +45,10 @@
     display: grid;
     grid-area: auth-inputs;
     row-gap: 6px;
+
+    @media screen and (min-width: $PAD){
+      padding-bottom: 134px;
+    }
 
     &_type_profile {
       row-gap: 0;
