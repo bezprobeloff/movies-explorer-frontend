@@ -3,7 +3,7 @@ import './App.scss';
 import Header from '../Header/Header';
 import Movies from '../Movies/Movies';
 import Footer from '../Footer/Footer';
-import { Route, Switch, useLocation } from 'react-router-dom';
+import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Main from '../Main/Main';
 import Profile from '../Profile/Profile';
@@ -15,16 +15,21 @@ import NotFound from '../NotFound/NotFound';
 const App = () => {
   const location = useLocation();
   const [isFooterDisable, setIsFooterDisable] = useState(false);
-  const footersDisabled = ['/signin', '/signup', '/profile'];
+  const routesFootersDisabled = ['/signin', '/signup', '/profile', '/404'];
+  const [isHeaderDisable, setIsHeaderDisable] = useState(false);
+  const routesHeaderDisabled = ['/404'];
 
   useEffect(() => {
-    if (footersDisabled.includes(location.pathname)) {
+    if (routesHeaderDisabled.includes(location.pathname)) {
+      setIsHeaderDisable(true);
+    }
+    if (routesFootersDisabled.includes(location.pathname)) {
       setIsFooterDisable(true);
     }
   }, [location.pathname]);
   return (
     <div className='App'>
-      <Header></Header>
+      {isHeaderDisable ? '' : <Header />}
       <Switch>
         <Route exact path='/'>
           <Main></Main>
@@ -51,6 +56,7 @@ const App = () => {
           </Auth>
         </Route>
         <Route>
+          <Redirect to='/404' />
           <NotFound />
         </Route>
       </Switch>
