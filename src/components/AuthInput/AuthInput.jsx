@@ -1,7 +1,10 @@
 import React from 'react';
 import './AuthInput.scss';
+import useInput from '../../utils/hooks/useInput';
 
 const AuthInput = ({ name, idName, type, value, isProfile = false }) => {
+  const input = useInput({ inputValue: value });
+
   const classContainer = `auth__input-container${
     isProfile ? ' auth__input-container_type_profile' : ''
   }`;
@@ -14,6 +17,7 @@ const AuthInput = ({ name, idName, type, value, isProfile = false }) => {
   const classInputError = `auth__input-error${
     isProfile ? ' auth__input-error_type_profile' : ''
   }`;
+
   return (
     <div className={classContainer}>
       <label className={classLabel} htmlFor={`auth-${idName}`}>
@@ -24,7 +28,8 @@ const AuthInput = ({ name, idName, type, value, isProfile = false }) => {
         id={`auth-${idName}`}
         placeholder={name}
         type={type}
-        value={value}
+        value={input.value}
+        onChange={input.onChange}
       />
       <span className={classInputError}>Что-то пошло не так</span>
     </div>
