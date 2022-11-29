@@ -13,9 +13,9 @@ const Header = () => {
     isTypeMain ? ' header_type_main' : ''
   }`;
   useEffect(() => {
-    if (location.pathname === '/') {
-      setIsTypeMain(true);
-    } else if (typesAuth.includes(location.pathname)) {
+    location.pathname === '/' ? setIsTypeMain(true) : setIsTypeMain(false);
+
+    if (typesAuth.includes(location.pathname)) {
       setIsTypeAuth(true);
     }
   }, [location.pathname]);
