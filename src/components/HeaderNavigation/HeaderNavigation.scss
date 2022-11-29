@@ -63,6 +63,7 @@
     display: grid;
     row-gap: 24px;
     align-content: start;
+    justify-items: center;
 
     @media screen and (min-width: $PAD){
       row-gap: 28px;
@@ -85,11 +86,43 @@
   }
 
   &__link {
+    position: relative;
     text-align: center;
     @include font_text(18px, 22px, black, 500);
 
     @media screen and (min-width: $DESKTOP){
-      @include font_text(14px, 18px, black, 500);
+      @include font_text(14px, 18px, black);
+    }
+
+    &_type_active {
+      @media screen
+        and (min-width: $MOBILE)
+        and (max-width: $DESKTOP_WITHOUT){
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -8px;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: black;
+
+          @media screen and (min-width: $PAD){
+            bottom: -4px;
+          }
+        }
+      }
+
+      @media screen and (min-width: $DESKTOP){
+        font-weight: 500;
+      }
+    }
+
+    &_type_home {
+      @media screen
+        and (min-width: $DESKTOP) {
+        display: none;
+      }
     }
   }
 

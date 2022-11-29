@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './HeaderNavigation.scss';
+import { NavLink } from 'react-router-dom';
 
 const HeaderNavigation = () => {
   const [isBurgerClose, setIsBurgerClose] = useState(true);
@@ -16,6 +17,7 @@ const HeaderNavigation = () => {
   const classNavigationAccountMenu = isBurgerClose
     ? ''
     : ' navigation__account_invisibled';
+  const classLink = 'link navigation__link';
 
   const onButtonBurgerClick = () => {
     setIsBurgerClose((state) => !state);
@@ -33,15 +35,28 @@ const HeaderNavigation = () => {
           onClick={onButtonBurgerClick}
         ></button>
         <nav className={`navigation__links${classNavigationLinksMenu}`}>
-          <a href='/' className='link navigation__link'>
+          <NavLink
+            to='/'
+            exact
+            className={`${classLink} navigation__link_type_home`}
+            activeClassName={'navigation__link_type_active'}
+          >
             Главная
-          </a>
-          <a href='/movies' className='link navigation__link'>
+          </NavLink>
+          <NavLink
+            to='/movies'
+            activeClassName={'navigation__link_type_active'}
+            className={classLink}
+          >
             Фильмы
-          </a>
-          <a href='/saved-movies' className='link navigation__link'>
+          </NavLink>
+          <NavLink
+            to='/saved-movies'
+            activeClassName={'navigation__link_type_active'}
+            className={classLink}
+          >
             Сохранённые фильмы
-          </a>
+          </NavLink>
         </nav>
         <a
           href='/profile'

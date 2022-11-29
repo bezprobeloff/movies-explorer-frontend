@@ -5,17 +5,4 @@
   min-width: 320px;
   position: relative;
   display: grid;
-
-  &_type_auth {
-    @media screen and (min-width: $PAD){
-      min-height: 1024px;
-      align-content: center;
-      justify-items: center;
-      grid-template-rows: auto auto;
-    }
-
-    @media screen and (min-width: $DESKTOP){
-      min-height: 700px;
-    }
-   }
 }

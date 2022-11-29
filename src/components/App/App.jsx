@@ -14,22 +14,16 @@ import NotFound from '../NotFound/NotFound';
 
 const App = () => {
   const location = useLocation();
-  const [isTypeAuth, setIsTypeAuth] = useState(false);
   const [isFooterDisable, setIsFooterDisable] = useState(false);
-  const typesAuth = ['/signin', '/signup'];
   const footersDisabled = ['/signin', '/signup', '/profile'];
-  const classApp = `App${isTypeAuth ? ' App_type_auth' : ''}`;
 
   useEffect(() => {
-    if (typesAuth.includes(location.pathname)) {
-      setIsTypeAuth(true);
-    }
     if (footersDisabled.includes(location.pathname)) {
       setIsFooterDisable(true);
     }
   }, [location.pathname]);
   return (
-    <div className={classApp}>
+    <div className='App'>
       <Header></Header>
       <Switch>
         <Route exact path='/'>
@@ -56,7 +50,7 @@ const App = () => {
             <Register />
           </Auth>
         </Route>
-        <Route path='*'>
+        <Route>
           <NotFound />
         </Route>
       </Switch>
