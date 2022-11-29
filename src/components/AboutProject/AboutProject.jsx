@@ -4,7 +4,7 @@ import './AboutProject.scss';
 
 const AboutProject = () => {
   return (
-    <section className='project about-project'>
+    <section id='about-project' className='project about-project'>
       <h2 className='project__title'>О проекте</h2>
       <ul className='about-project__points'>
         <li className='about-project__point'>

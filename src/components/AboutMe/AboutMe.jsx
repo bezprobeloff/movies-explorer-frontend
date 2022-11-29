@@ -18,7 +18,14 @@ const AboutMe = () => {
           После того, как прошёл курс по веб&#8209;разработке, начал заниматься
           фриланс&#8209;заказами и ушёл с постоянной работы.
         </p>
-        <a className='about-me__link-repo'>Github</a>
+        <a
+          href='https://github.com/bezprobeloff'
+          rel='noreferrer'
+          target='_blank'
+          className='link about-me__link-repo'
+        >
+          Github
+        </a>
       </div>
     </section>
   );

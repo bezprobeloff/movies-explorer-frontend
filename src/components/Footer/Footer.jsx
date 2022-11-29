@@ -9,8 +9,22 @@ const Footer = () => {
           Учебный проект Яндекс.Практикум х BeatFilm.
         </h2>
         <nav className='footer__nav'>
-          <a className='footer__nav-link'>Яндекс.Практикум</a>
-          <a className='footer__nav-link'>Github</a>
+          <a
+            href='https://practicum.yandex.ru/'
+            rel='noreferrer'
+            target='_blank'
+            className='link footer__nav-link'
+          >
+            Яндекс.Практикум
+          </a>
+          <a
+            href='https://github.com/bezprobeloff'
+            rel='noreferrer'
+            target='_blank'
+            className='link footer__nav-link'
+          >
+            Github
+          </a>
         </nav>
         <p className='footer__copyright'>{`© ${new Date().getFullYear()}`}</p>
       </div>

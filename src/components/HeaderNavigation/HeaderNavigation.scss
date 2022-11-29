@@ -1,5 +1,10 @@
 @import '../../styles/variables';
 
+@keyframes showLeft {
+  from {left:-100%;}
+  to {left:0;}
+}
+
 .navigation {
   display: grid;
   position: relative;
@@ -20,6 +25,7 @@
       right: 0;
       z-index: 1;
       background-color: rgba(black, 0.3);
+      animation: showLeft 2s;
     }
   }
 

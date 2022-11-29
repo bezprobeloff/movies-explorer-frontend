@@ -33,11 +33,20 @@ const HeaderNavigation = () => {
           onClick={onButtonBurgerClick}
         ></button>
         <nav className={`navigation__links${classNavigationLinksMenu}`}>
-          <a className='navigation__link'>Главная</a>
-          <a className='navigation__link'>Фильмы</a>
-          <a className='navigation__link'>Сохранённые фильмы</a>
+          <a href='/' className='link navigation__link'>
+            Главная
+          </a>
+          <a href='/movies' className='link navigation__link'>
+            Фильмы
+          </a>
+          <a href='/saved-movies' className='link navigation__link'>
+            Сохранённые фильмы
+          </a>
         </nav>
-        <a className={`navigation__account${classNavigationAccountMenu}`}>
+        <a
+          href='/profile'
+          className={`link navigation__account${classNavigationAccountMenu}`}
+        >
           Аккаунт
         </a>
       </div>

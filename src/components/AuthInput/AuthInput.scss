@@ -33,6 +33,10 @@
     border-right: none;
     border-bottom: 1px solid $GRAY_ELEMENT;
 
+    &:focus {
+      outline: none;
+    }
+
     &_type_profile {
       padding: 0 0 17px;
       text-align: right;

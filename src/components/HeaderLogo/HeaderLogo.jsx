@@ -4,7 +4,7 @@ import logo from '../../images/logo.svg';
 
 const HeaderLogo = () => {
   return (
-    <a className='header__logo-link'>
+    <a href='/' className='link header__logo-link'>
       <img src={logo} className='header__logo' alt='Логотип сайта' />
     </a>
   );
