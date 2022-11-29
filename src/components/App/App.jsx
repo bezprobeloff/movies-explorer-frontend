@@ -10,6 +10,7 @@ import Profile from '../Profile/Profile';
 import Auth from '../Auth/Auth';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
+import NotFound from '../NotFound/NotFound';
 
 const App = () => {
   const location = useLocation();
@@ -54,6 +55,9 @@ const App = () => {
           <Auth>
             <Register />
           </Auth>
+        </Route>
+        <Route path='*'>
+          <NotFound />
         </Route>
       </Switch>
       {isFooterDisable ? '' : <Footer></Footer>}

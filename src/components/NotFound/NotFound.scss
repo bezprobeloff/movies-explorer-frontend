@@ -1,0 +1,56 @@
+@import '../../styles/variables';
+
+.notFound {
+  display: grid;
+  padding: 75px 10px 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+  grid-template-rows: 1fr auto;
+
+  @media screen and (min-width: $PAD){
+    padding: 252px 50px 0;
+    min-height: 833px;
+  }
+
+  @media screen and (min-width: $DESKTOP){
+    padding: 90px 50px 0;
+    min-height: 671px;
+  }
+
+  &__info {
+    display: grid;
+    align-content: center;
+  }
+
+  &__title {
+    margin: 0;
+    @include font_text(80px, 97px);
+    text-align: center;
+    padding-bottom: 10px;
+
+    @media screen and (min-width: $PAD){
+      @include font_text(140px, 169px);
+      padding-bottom: 5px;
+    }
+  }
+
+  &__description {
+    margin: 0;
+    @include font_text(12px, 15px);
+    text-align: center;
+
+    @media screen and (min-width: $PAD){
+      @include font_text(16px, 19px);
+    }
+  }
+
+  &__link {
+    margin: 30px;
+    @include font_text(12px, 15px, $ORANGE);
+    text-align: center;
+
+    @media screen and (min-width: $PAD){
+      @include font_text(14px, 17px, $ORANGE);
+    }
+  }
+}
