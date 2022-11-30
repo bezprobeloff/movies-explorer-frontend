@@ -1,11 +1,13 @@
 import React from 'react';
 import './AuthSubmit.scss';
+import { Link } from 'react-router-dom';
 
 const AuthSubmit = ({
   textButton,
   textPreLink,
   textLink,
   isProfile = false,
+  urlLinkSubmit,
 }) => {
   const classContainer = `auth__submit-container${
     isProfile ? ' auth__submit-container_type_profile' : ''
@@ -25,7 +27,9 @@ const AuthSubmit = ({
       </button>
       <p className={classText}>
         {textPreLink}
-        <a className={classLink}>{textLink}</a>
+        <Link to={urlLinkSubmit} className={classLink}>
+          {textLink}
+        </Link>
       </p>
     </div>
   );

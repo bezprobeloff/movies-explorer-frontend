@@ -27,6 +27,7 @@ const Register = () => {
         textButton='Зарегистрироваться'
         textPreLink='Уже зарегистрированы? '
         textLink='Войти'
+        urlLinkSubmit='/signin'
       />
     </>
   );

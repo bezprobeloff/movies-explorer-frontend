@@ -26,6 +26,7 @@ const Login = () => {
         textButton='Войти'
         textPreLink='Ещё не зарегистрированы? '
         textLink='Регистрация'
+        urlLinkSubmit='/signup'
       />
     </>
   );
