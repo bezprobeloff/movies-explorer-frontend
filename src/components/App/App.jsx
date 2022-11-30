@@ -11,6 +11,8 @@ import Auth from '../Auth/Auth';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import NotFound from '../NotFound/NotFound';
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
+import ConfirmationPopup from '../ConfirmationPopup/ConfirmationPopup';
 
 const App = () => {
   const location = useLocation();
@@ -61,6 +63,19 @@ const App = () => {
         </Route>
       </Switch>
       {isFooterDisable ? '' : <Footer></Footer>}
+      <InfoTooltip
+        name='infoTooltip'
+        isSuccess={true}
+        message={''}
+        isOpen={false}
+        onClose={() => {}}
+      />
+      <ConfirmationPopup
+        name='confirmation'
+        isOpen={false}
+        onSubmit={() => {}}
+        onClose={() => {}}
+      />
     </div>
   );
 };
