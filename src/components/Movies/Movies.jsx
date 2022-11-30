@@ -4,11 +4,13 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import ButtonMore from '../ButtonMore/ButtonMore';
+import Preloader from '../Preloader/Preloader';
 
 const Movies = () => {
   return (
     <section className='movies'>
       <SearchForm></SearchForm>
+      <Preloader />
       <MoviesCardList>
         <MoviesCard isPined={true} />
         <MoviesCard isPined={true} />
