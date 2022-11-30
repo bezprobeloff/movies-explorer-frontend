@@ -1,0 +1,37 @@
+@import '../../styles/variables';
+
+.header {
+  &__auth {
+    display: grid;
+    grid-auto-columns: min-content;
+    grid-auto-flow: column;
+    justify-content: end;
+    align-items: center;
+    column-gap: 14px;
+    box-sizing: border-box;
+
+    @media screen and (min-width: $PAD){
+      column-gap: 30px;
+    }
+
+    &-link {
+      @include font_text(10px, 16px, white, 500);
+      text-decoration: none;
+
+      @media screen and (min-width: $PAD){
+        @include font_text(12px, 16px, white, 500);
+      }
+
+      &_type_login {
+        padding: 5px 12px;
+        color: black;
+        background-color: $GREEN;
+        border-radius: 3px;
+
+        @media screen and (min-width: $PAD){
+          padding: 8px 20px;
+        }
+      }
+    }
+  }
+}

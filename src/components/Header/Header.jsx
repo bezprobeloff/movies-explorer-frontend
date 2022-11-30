@@ -3,6 +3,7 @@ import './Header.scss';
 import HeaderNavigation from '../HeaderNavigation/HeaderNavigation';
 import HeaderLogo from '../HeaderLogo/HeaderLogo';
 import { useLocation } from 'react-router-dom';
+import HeaderAuth from '../HeaderAuth/HeaderAuth';
 
 const Header = () => {
   const location = useLocation();
@@ -27,7 +28,8 @@ const Header = () => {
         }`}
       >
         <HeaderLogo />
-        {isTypeAuth ? '' : <HeaderNavigation />}
+        {isTypeAuth || isTypeMain ? '' : <HeaderNavigation />}
+        {isTypeMain ? <HeaderAuth /> : ''}
       </div>
     </header>
   );
