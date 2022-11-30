@@ -28,6 +28,7 @@
   }
 
   &-button {
+    position: relative;
     width: 30px;
     height: 30px;
     grid-area: movie-button;
@@ -36,6 +37,33 @@
     background-color: #F9F9F9;
     border: none;
     border-radius: 50%;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-image: url("../../images/icon-pin.svg");
+      background-repeat: no-repeat;
+      background-size: 10px 13px;
+      background-position: center;
+      top: 0;
+      left: 0;
+    }
+
+    &_pined {
+      background-color: $GREEN;
+      &::after {
+        background-image: url("../../images/icon-pin-white.svg");
+      }
+    }
+
+    &_saved {
+      &::after {
+        background-size: 12px;
+        background-image: url("../../images/icon-cross.svg");
+      }
+    }
   }
 
   &-image {

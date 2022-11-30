@@ -10,9 +10,11 @@ const Movies = () => {
     <section className='movies'>
       <SearchForm></SearchForm>
       <MoviesCardList>
-        <MoviesCard></MoviesCard>
-        <MoviesCard></MoviesCard>
-        <MoviesCard></MoviesCard>
+        <MoviesCard isPined={true} />
+        <MoviesCard isPined={true} />
+        <MoviesCard />
+        <MoviesCard />
+        <MoviesCard />
       </MoviesCardList>
       <ButtonMore></ButtonMore>
     </section>
