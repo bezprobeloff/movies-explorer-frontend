@@ -22,6 +22,8 @@ const App = () => {
   const routesHeaderDisabled = ['/404'];
 
   useEffect(() => {
+    setIsHeaderDisable(false);
+    setIsFooterDisable(false);
     if (routesHeaderDisabled.includes(location.pathname)) {
       setIsHeaderDisable(true);
     }

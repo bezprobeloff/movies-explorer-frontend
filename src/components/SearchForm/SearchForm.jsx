@@ -8,7 +8,7 @@ const SearchForm = ({ onSubmit }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
-    onSubmit();
+    onSubmit(searchInput.value);
   };
   return (
     <form className='search-form' onSubmit={handleSubmit} noValidate>

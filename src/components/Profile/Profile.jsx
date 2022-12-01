@@ -30,6 +30,7 @@ const Profile = () => {
         textPreLink=''
         textLink='Выйти из аккаунта'
         isProfile={true}
+        urlLinkSubmit='/signin'
       />
     </>
   );
