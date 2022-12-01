@@ -31,6 +31,10 @@
     border-radius: 8px;
     @include font_text(14px, 18px, $GRAY_TEXT);
 
+    &:focus {
+      outline: 2px solid darkgray;
+    }
+
     @media screen and (min-width: $PAD){
       padding: 16px 20px;
     }
