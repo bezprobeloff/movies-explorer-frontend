@@ -58,7 +58,7 @@
       }
     }
 
-    &_saved {
+    .movies_type_saved & {
       &::after {
         background-size: 12px;
         background-image: url("../../images/icon-cross.svg");

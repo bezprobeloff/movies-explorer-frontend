@@ -8,7 +8,7 @@ import Preloader from '../Preloader/Preloader';
 
 const Movies = () => {
   return (
-    <section className='movies'>
+    <main className='movies'>
       <SearchForm></SearchForm>
       <Preloader />
       <MoviesCardList>
@@ -19,7 +19,7 @@ const Movies = () => {
         <MoviesCard />
       </MoviesCardList>
       <ButtonMore></ButtonMore>
-    </section>
+    </main>
   );
 };
 

@@ -8,16 +8,16 @@ import Preloader from '../Preloader/Preloader';
 
 const SavedMovies = () => {
   return (
-    <section className='movies'>
-      <SearchForm></SearchForm>
+    <main className='movies movies_type_saved'>
+      <SearchForm />
       <Preloader />
       <MoviesCardList>
-        <MoviesCard isTypeSaved={true} />
-        <MoviesCard isTypeSaved={true} />
-        <MoviesCard isTypeSaved={true} />
+        <MoviesCard />
+        <MoviesCard />
+        <MoviesCard />
       </MoviesCardList>
-      <ButtonMore></ButtonMore>
-    </section>
+      <ButtonMore />
+    </main>
   );
 };
 

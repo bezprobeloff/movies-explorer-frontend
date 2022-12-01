@@ -34,22 +34,22 @@ const App = () => {
       {isHeaderDisable ? '' : <Header />}
       <Switch>
         <Route exact path='/'>
-          <Main></Main>
+          <Main />
         </Route>
         <Route path='/movies'>
-          <Movies></Movies>
+          <Movies />
         </Route>
         <Route path='/saved-movies'>
-          <SavedMovies></SavedMovies>
+          <SavedMovies />
         </Route>
         <Route path='/profile'>
           <Auth isProfile={true}>
-            <Profile></Profile>
+            <Profile />
           </Auth>
         </Route>
         <Route path='/signin'>
           <Auth>
-            <Login></Login>
+            <Login />
           </Auth>
         </Route>
         <Route path='/signup'>
@@ -62,7 +62,7 @@ const App = () => {
           <NotFound />
         </Route>
       </Switch>
-      {isFooterDisable ? '' : <Footer></Footer>}
+      {isFooterDisable ? '' : <Footer />}
       <InfoTooltip
         name='infoTooltip'
         isSuccess={true}
