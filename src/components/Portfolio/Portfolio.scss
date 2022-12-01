@@ -1,0 +1,80 @@
+@import '../../styles/variables';
+
+.portfolio {
+  display: grid;
+  padding: 0 14px 70px;
+
+  @media screen and (min-width: $PAD){
+    padding: 0 50px 90px;
+  }
+
+  @media screen and (min-width: $DESKTOP){
+    padding: 0 70px 125px;
+  }
+
+  &__title {
+    margin: 0;
+    @include font_text(14px, 20px, $GRAY_TEXT);
+
+    @media screen  and (min-width: $PAD){
+      @include font_text(18px, 20px, $GRAY_TEXT);
+    }
+  }
+
+  &__links {
+    display: grid;
+    padding: 40px 0 0;
+    margin: 0;
+    row-gap: 20px;
+    list-style-type: none;
+    box-sizing: border-box;
+
+    @media screen  and (min-width: $PAD){
+      padding-top: 50px;
+    }
+  }
+
+  &__link-item {
+    display: grid;
+    border-bottom: 1px solid #E6E6E6;
+    padding-bottom: 19px;
+
+    &:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+  }
+
+  &__link {
+    position: relative;
+    @include font_text(18px, 28px);
+    letter-spacing: -0.04em;
+
+    @media screen  and (min-width: $PAD){
+      @include font_text(28px, 50px);
+    }
+
+    @media screen  and (min-width: $DESKTOP){
+      @include font_text(30px, 50px);
+    }
+
+    &::before {
+      content: '';
+      width: 12px;
+      height: 11px;
+      position: absolute;
+      top: 6px;
+      right: 3px;
+      background-image: url("../../images/icon-arrow-up.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      @media screen and (min-width: $PAD) {
+        width: 20px;
+        height: 17px;
+        top: 18px;
+        right: 2px;
+      }
+    }
+  }
+}

@@ -1,0 +1,92 @@
+@import '../../styles/variables';
+
+.about-project {
+  &__points {
+    display: grid;
+    margin: 0;
+    padding: 60px 0 0;
+    row-gap: 56px;
+    list-style-type: none;
+
+    @media screen and (min-width: $PAD) {
+      padding: 70px 0 0;
+      column-gap: 30px;
+      row-gap: 30px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: $DESKTOP) {
+      column-gap: 40px;
+      row-gap: 40px;
+    }
+  }
+
+  &__point {
+    &-title {
+      padding-top: 0;
+      padding-bottom: 16px;
+      border-bottom: none;
+
+      @media screen and (min-width: $PAD){
+        padding-bottom: 22px;
+        @include font_text(20px, 24px);
+      }
+
+      @media screen and (min-width: $DESKTOP){
+        padding-bottom: 26px;
+      }
+    }
+
+    &-description {
+    }
+  }
+
+  &__times {
+    display: grid;
+    padding: 0;
+    margin: 60px 0 0;
+    grid-template-columns: 100px 1fr;
+
+    @media screen and (min-width: $PAD){
+      margin: 93px 0 0;
+      grid-template-columns: 140px 1fr;
+    }
+
+    @media screen and (min-width: $DESKTOP){
+      margin: 110px 0 0;
+      grid-template-columns: 228px 1fr;
+    }
+  }
+
+  &__time {
+    display: grid;
+    row-gap: 10px;
+    @include font_text(11px, 13px);
+
+    @media screen and (min-width: $PAD){
+      row-gap: 15px;
+      @include font_text(14px, 17px);
+    }
+
+    &-title {
+      margin: 0;
+      padding: 11px 10px;
+      background-color: $GREEN;
+      text-align: center;
+
+      @media screen and (min-width: $PAD){
+        padding: 9px 10px;
+      }
+    }
+
+    &:nth-child(even) &-title {
+      background-color: #F2F2F2;
+    }
+
+    &-subtitle {
+      margin: 0;
+      color: $GRAY_TEXT;
+      text-align: center;
+    }
+  }
+}

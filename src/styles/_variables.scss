@@ -1,0 +1,21 @@
+$GREEN: #2BE080;
+$BLUE: #465DFF;
+$GRAY_TEXT: #A0A0A0;
+$GRAY_ELEMENT: #E8E8E8;
+$ORANGE: #FF6838;
+$PINK: #EE3465;
+$MOBILE: 320px;
+$PAD: 768px;
+$PAD_WITHOUT: $PAD - 1px;
+$DESKTOP: 1280px;
+$DESKTOP_WITHOUT: $DESKTOP - 1px;
+
+@mixin font_text($size, $lineHeight, $color: black, $weight: 400) {
+  font: {
+    style: normal;
+    weight: $weight;
+    size: $size;
+  }
+  line-height: calc(round(calc($lineHeight / $size) * 100) / 100);
+  color: $color;
+}

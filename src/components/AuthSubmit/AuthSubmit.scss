@@ -1,0 +1,68 @@
+@import '../../styles/variables';
+
+.auth {
+  &__submit-container {
+    display: grid;
+    margin-bottom: 30px;
+    grid-area: auth-submit;
+
+    &_type_profile {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__button-submit {
+    padding: 15px;
+    margin-bottom: 14px;
+    border: none;
+    border-radius: 3px;
+    background-color: $ORANGE;
+    @include font_text(12px, 15px, white, 500);
+
+    @media screen and (min-width: $PAD){
+      padding: 13px 15px 15px;
+      margin-bottom: 16px;
+      @include font_text(14px, 17px, white, 500);
+    }
+
+    &_type_profile {
+      padding: 0;
+      border: none;
+      border-radius: 0;
+      background-color: transparent;
+      @include font_text(12px, 15px);
+
+      @media screen and (min-width: $PAD){
+        @include font_text(13px, 16px);
+      }
+    }
+  }
+
+  &__text {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    @include font_text(12px, 15px, $GRAY_TEXT);
+
+    @media screen and (min-width: $PAD){
+      @include font_text(14px, 17px, $GRAY_TEXT);
+    }
+
+    &_type_profile {
+      @include font_text(12px, 15px);
+
+      @media screen and (min-width: $PAD){
+        @include font_text(13px, 16px);
+      }
+    }
+  }
+
+  &__link {
+    color: $ORANGE;
+    font-weight: 500;
+
+    &_type_profile {
+      color: $PINK;
+    }
+  }
+}

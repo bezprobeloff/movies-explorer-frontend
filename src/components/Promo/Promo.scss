@@ -1,0 +1,117 @@
+@import '../../styles/variables';
+
+.promo {
+  display: grid;
+  justify-items: center;
+  box-sizing: border-box;
+  background-color: $BLUE;
+
+  &__container {
+    display: grid;
+    padding: 0 10px 0;
+    justify-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+
+    @media screen  and (min-width: $PAD){
+      padding: 0 44px 0;
+    }
+
+    @media screen and (min-width: $DESKTOP) {
+      width: 1280px;
+      min-height: 574px;
+      padding: 75px 70px 50px;
+      grid-template-columns: repeat(2, auto);
+      justify-content: space-between;
+    }
+  }
+
+  &__info {
+    display: grid;
+    justify-items: center;
+
+    @media screen and (min-width: $DESKTOP) {
+      align-content: start;
+      grid-template-rows: repeat(2, auto) 1fr;
+      max-width: 640px;
+      justify-items: start;
+    }
+  }
+
+  &__logo {
+    margin-top: 70px;
+    width: 210px;
+    height: 206px;
+
+    @media screen and (min-width: $PAD){
+      margin-top: 140px;
+      width: 310px;
+      height: 304px;
+    }
+
+    @media screen and (min-width: $DESKTOP) {
+      margin-top: 0;
+      order: 1;
+    }
+  }
+
+  &__title {
+    margin-top: 44px;
+    margin-bottom: 0;
+    @include font_text(30px, 38px, white);
+    text-align: center;
+    letter-spacing: -0.04em;
+
+    @media screen and (min-width: $PAD) {
+      margin-top: 48px;
+      @include font_text(40px, 50px, white);
+    }
+
+    @media screen and (min-width: $DESKTOP) {
+      margin-top: 0;
+      text-align: start;
+      @include font_text(50px, 58px, white);
+    }
+  }
+
+  &__text {
+    margin-top: 24px;
+    margin-bottom: 0;
+    padding: 0 18px;
+    @include font_text(13px, 16px, rgba(white, 0.5));
+    text-align: center;
+
+    @media screen and (min-width: $PAD){
+      max-width: 260px;
+    }
+
+    @media screen and (min-width: $DESKTOP){
+      margin-top: 36px;
+      padding: 0;
+      max-width: 310px;
+      text-align: start;
+    }
+  }
+
+  &__link {
+    width: fit-content;
+    margin-top: 79px;
+    margin-bottom: 30px;
+    padding: 10px 20px;
+    @include font_text(12px, 16px, white, 500);
+    border: 1px solid rgba(white, 0.6);
+    border-radius: 3px;
+    text-align: center;
+
+    @media screen and (min-width: $PAD){
+      margin-top: 89px;
+      margin-bottom: 75px;
+    }
+
+    @media screen and (min-width: $DESKTOP){
+      align-self: end;
+      margin-top: 0px;
+      margin-bottom: 25px;
+    }
+  }
+}

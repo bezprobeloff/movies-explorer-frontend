@@ -1,0 +1,57 @@
+@import '../../styles/variables';
+
+.auth {
+  display: grid;
+
+  @media screen and (min-width: $PAD){
+    justify-content: center;
+  }
+
+  &__form {
+    display: grid;
+    padding: 0 30px;
+    min-height: calc(100vh - 144px);
+    align-content: start;
+    grid-template-areas:
+    "auth-title"
+    "auth-inputs"
+    "."
+    "auth-submit"
+    ;
+    grid-template-rows: repeat(2, auto) 1fr auto;
+
+    @media screen and (min-width: $PAD){
+      width: 396px;
+      min-height: 553px;
+      padding: 0;
+    }
+
+    &_type_profile {
+      min-height: calc(100vh - 74px);
+
+      @media screen and (min-width: $PAD){
+        width: 410px;
+        min-height: 720px;
+      }
+
+      @media screen and (min-width: $DESKTOP){
+        min-height: 596px;
+      }
+    }
+  }
+
+  &__inputs {
+    padding-bottom: 20px;
+    display: grid;
+    grid-area: auth-inputs;
+    row-gap: 6px;
+
+    @media screen and (min-width: $PAD){
+      padding-bottom: 30px;
+    }
+
+    &_type_profile {
+      row-gap: 0;
+    }
+  }
+}

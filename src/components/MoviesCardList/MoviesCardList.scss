@@ -1,0 +1,24 @@
+@import '../../styles/variables';
+
+.movies__card-list {
+  display: grid;
+  margin: 0;
+  padding: 40px 10px 30px;
+  row-gap: 16px;
+  box-sizing: border-box;
+  list-style-type: none;
+
+  @media screen  and (min-width: $PAD){
+    padding: 70px 30px 30px;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 30px;
+    row-gap: 36px;
+  }
+
+  @media screen and (min-width: $DESKTOP){
+    padding: 70px 70px 30px;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 24px;
+    row-gap: 30px;
+  }
+}

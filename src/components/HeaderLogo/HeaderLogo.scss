@@ -1,0 +1,11 @@
+.header {
+  &__logo-link {
+    display: grid;
+  }
+
+  &__logo {
+    width: 38px;
+    height: 38px;
+    justify-self: start;
+  }
+}
