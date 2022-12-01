@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.scss';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import Header from '../Header/Header';
 import Movies from '../Movies/Movies';
 import Footer from '../Footer/Footer';
@@ -15,6 +16,13 @@ import InfoTooltip from '../InfoTooltip/InfoTooltip';
 
 const App = () => {
   const location = useLocation();
+  const [currentUser, setCurrentUser] = useState({
+    name: 'user',
+    about: 'about',
+    avatar: '',
+    isLoggedIn: false,
+    email: '',
+  });
   const [isFooterDisable, setIsFooterDisable] = useState(false);
   const [isHeaderDisable, setIsHeaderDisable] = useState(false);
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
@@ -31,6 +39,7 @@ const App = () => {
     setIsInfoTooltipOpen(true);
   };
   const closePopup = () => {
+    setCurrentUser({ name: 'user' });
     setIsInfoTooltipOpen(false);
   };
   const onInputSearchError = () => {
@@ -56,47 +65,49 @@ const App = () => {
   }, [location.pathname]);
   return (
     <div className='App'>
-      {isHeaderDisable ? '' : <Header />}
-      <Switch>
-        <Route exact path='/'>
-          <Main />
-        </Route>
-        <Route path='/movies'>
-          <Movies onInputSearchError={onInputSearchError} />
-        </Route>
-        <Route path='/saved-movies'>
-          <SavedMovies />
-        </Route>
-        <Route path='/profile'>
-          <Auth isProfile={true}>
-            <Profile />
-          </Auth>
-        </Route>
-        <Route path='/signin'>
-          <Auth>
-            <Login />
-          </Auth>
-        </Route>
-        <Route path='/signup'>
-          <Auth>
-            <Register />
-          </Auth>
-        </Route>
-        <Route>
-          <Redirect to='/404' />
-          <NotFound />
-        </Route>
-      </Switch>
-      {isFooterDisable ? '' : <Footer />}
-      <InfoTooltip
-        name='infoTooltip'
-        buttonText={infoTooltipProps.buttonText}
-        isError={infoTooltipProps.isError}
-        message={infoTooltipProps.message}
-        isOpen={isInfoTooltipOpen}
-        onClose={closePopup}
-        onSubmit={infoTooltipProps.onSubmit}
-      />
+      <CurrentUserContext.Provider value={currentUser}>
+        {isHeaderDisable ? '' : <Header />}
+        <Switch>
+          <Route exact path='/'>
+            <Main />
+          </Route>
+          <Route path='/movies'>
+            <Movies onInputSearchError={onInputSearchError} />
+          </Route>
+          <Route path='/saved-movies'>
+            <SavedMovies />
+          </Route>
+          <Route path='/profile'>
+            <Auth isProfile={true}>
+              <Profile />
+            </Auth>
+          </Route>
+          <Route path='/signin'>
+            <Auth>
+              <Login />
+            </Auth>
+          </Route>
+          <Route path='/signup'>
+            <Auth>
+              <Register />
+            </Auth>
+          </Route>
+          <Route>
+            <Redirect to='/404' />
+            <NotFound />
+          </Route>
+        </Switch>
+        {isFooterDisable ? '' : <Footer />}
+        <InfoTooltip
+          name='infoTooltip'
+          buttonText={infoTooltipProps.buttonText}
+          isError={infoTooltipProps.isError}
+          message={infoTooltipProps.message}
+          isOpen={isInfoTooltipOpen}
+          onClose={closePopup}
+          onSubmit={infoTooltipProps.onSubmit}
+        />
+      </CurrentUserContext.Provider>
     </div>
   );
 };
