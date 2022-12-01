@@ -12,14 +12,37 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 import NotFound from '../NotFound/NotFound';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
-import ConfirmationPopup from '../ConfirmationPopup/ConfirmationPopup';
 
 const App = () => {
   const location = useLocation();
   const [isFooterDisable, setIsFooterDisable] = useState(false);
-  const routesFootersDisabled = ['/signin', '/signup', '/profile', '/404'];
   const [isHeaderDisable, setIsHeaderDisable] = useState(false);
+  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
+  const [infoTooltipProps, setInfoTooltipProps] = useState({
+    message: '',
+    isError: false,
+    buttonText: '',
+    onSubmit: () => {},
+  });
+  const routesFootersDisabled = ['/signin', '/signup', '/profile', '/404'];
   const routesHeaderDisabled = ['/404'];
+
+  const infoTooltipOpen = () => {
+    setIsInfoTooltipOpen(true);
+  };
+  const closePopup = () => {
+    setIsInfoTooltipOpen(false);
+  };
+  const onInputSearchError = () => {
+    setInfoTooltipProps({
+      ...infoTooltipProps,
+      message: 'Нужно ввести ключевое слово',
+      buttonText: 'OK',
+      isError: true,
+      onSubmit: closePopup,
+    });
+    infoTooltipOpen();
+  };
 
   useEffect(() => {
     setIsHeaderDisable(false);
@@ -39,7 +62,7 @@ const App = () => {
           <Main />
         </Route>
         <Route path='/movies'>
-          <Movies />
+          <Movies onInputSearchError={onInputSearchError} />
         </Route>
         <Route path='/saved-movies'>
           <SavedMovies />
@@ -67,16 +90,12 @@ const App = () => {
       {isFooterDisable ? '' : <Footer />}
       <InfoTooltip
         name='infoTooltip'
-        isSuccess={true}
-        message={''}
-        isOpen={false}
-        onClose={() => {}}
-      />
-      <ConfirmationPopup
-        name='confirmation'
-        isOpen={false}
-        onSubmit={() => {}}
-        onClose={() => {}}
+        buttonText={infoTooltipProps.buttonText}
+        isError={infoTooltipProps.isError}
+        message={infoTooltipProps.message}
+        isOpen={isInfoTooltipOpen}
+        onClose={closePopup}
+        onSubmit={infoTooltipProps.onSubmit}
       />
     </div>
   );

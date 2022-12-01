@@ -17,7 +17,7 @@ const Popup = ({ name, isOpen, onClose, children }) => {
   };
 
   const removeHandleEscClosePopup = () => {
-    document.addEventListener('keydown', handleEscClosePopup);
+    document.removeEventListener('keydown', handleEscClosePopup);
   };
 
   useEffect(() => {

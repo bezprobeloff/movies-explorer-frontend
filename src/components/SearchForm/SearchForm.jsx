@@ -3,12 +3,13 @@ import './SearchForm.scss';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import useInput from '../../utils/hooks/useInput';
 
-const SearchForm = ({ onSubmit }) => {
+const SearchForm = ({ onSubmit, onInputSearchError }) => {
   const searchInput = useInput({});
   const handleSubmit = (evt) => {
     evt.preventDefault();
-
-    onSubmit(searchInput.value);
+    searchInput.value != ''
+      ? onSubmit(searchInput.value)
+      : onInputSearchError();
   };
   return (
     <form className='search-form' onSubmit={handleSubmit} noValidate>
