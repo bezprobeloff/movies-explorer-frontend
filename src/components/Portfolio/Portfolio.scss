@@ -23,20 +23,32 @@
 
   &__links {
     display: grid;
-    padding-top: 40px;
+    padding: 40px 0 0;
+    margin: 0;
     row-gap: 20px;
+    list-style-type: none;
+    box-sizing: border-box;
 
     @media screen  and (min-width: $PAD){
       padding-top: 50px;
     }
   }
 
+  &__link-item {
+    display: grid;
+    border-bottom: 1px solid #E6E6E6;
+    padding-bottom: 19px;
+
+    &:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+  }
+
   &__link {
     position: relative;
-    padding-bottom: 19px;
     @include font_text(18px, 28px);
     letter-spacing: -0.04em;
-    border-bottom: 1px solid #E6E6E6;
 
     @media screen  and (min-width: $PAD){
       @include font_text(28px, 50px);
@@ -63,11 +75,6 @@
         top: 18px;
         right: 2px;
       }
-    }
-
-    &:last-child {
-      padding-bottom: 0;
-      border-bottom: none;
     }
   }
 }
