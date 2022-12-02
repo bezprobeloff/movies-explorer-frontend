@@ -9,7 +9,7 @@ import { filterMovies } from '../../utils/utils';
 
 const Movies = ({ onInputSearchError, errorGetMoviesPopupOpen }) => {
   const [isInitialPage, setIsInitialPage] = useState(true);
-  //const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
   const [isPreloaderEnabled, setIsPreloaderEnabled] = useState(false);
   const [movies, setMovies] = useState([]);
 
@@ -26,6 +26,9 @@ const Movies = ({ onInputSearchError, errorGetMoviesPopupOpen }) => {
         setIsPreloaderEnabled(false);
       });
   };
+  const handleInputChecked = (evt) => {
+    setIsChecked(evt.target.checked);
+  };
 
   return (
     <main className='movies'>
@@ -33,13 +36,14 @@ const Movies = ({ onInputSearchError, errorGetMoviesPopupOpen }) => {
         onSubmit={handleSearchSubmit}
         onInputSearchError={onInputSearchError}
         isStorageSave={true}
+        handleInputChecked={handleInputChecked}
       />
       <MoviesCardList>
         <RenderMovies
           movies={movies}
           isInitialPage={isInitialPage}
           isPreloaderEnabled={isPreloaderEnabled}
-          isChecked={false}
+          isChecked={isChecked}
         />
       </MoviesCardList>
       <ButtonMore></ButtonMore>

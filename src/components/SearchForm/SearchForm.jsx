@@ -7,6 +7,7 @@ const SearchForm = ({
   onSubmit,
   onInputSearchError,
   isStorageSave = false,
+  handleInputChecked,
 }) => {
   const searchInput = useInput({});
 
@@ -26,7 +27,7 @@ const SearchForm = ({
         required
       />
       <button className='link search-form__button' type='submit' />
-      <FilterCheckbox isStorageSave={true} />
+      <FilterCheckbox isStorageSave={true} onChange={handleInputChecked} />
     </form>
   );
 };
