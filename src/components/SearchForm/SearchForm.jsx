@@ -3,10 +3,16 @@ import './SearchForm.scss';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import useInput from '../../utils/hooks/useInput';
 
-const SearchForm = ({ onSubmit, onInputSearchError }) => {
+const SearchForm = ({
+  onSubmit,
+  onInputSearchError,
+  isStorageSave = false,
+}) => {
   const searchInput = useInput({});
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    isStorageSave ? localStorage.setItem('name', searchInput.value) : '';
     searchInput.value != ''
       ? onSubmit(searchInput.value)
       : onInputSearchError();
@@ -20,7 +26,7 @@ const SearchForm = ({ onSubmit, onInputSearchError }) => {
         required
       />
       <button className='link search-form__button' type='submit' />
-      <FilterCheckbox />
+      <FilterCheckbox isStorageSave={true} />
     </form>
   );
 };

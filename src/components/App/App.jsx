@@ -52,6 +52,19 @@ const App = () => {
     });
     infoTooltipOpen();
   };
+  const errorGetMoviesPopupOpen = () => {
+    setInfoTooltipProps({
+      ...infoTooltipProps,
+      message:
+        'Во время запроса произошла ошибка. ' +
+        'Возможно, проблема с соединением или сервер недоступен. ' +
+        'Подождите немного и попробуйте ещё раз',
+      buttonText: 'OK',
+      isError: true,
+      onSubmit: closePopup,
+    });
+    infoTooltipOpen();
+  };
 
   useEffect(() => {
     setIsHeaderDisable(false);
@@ -72,7 +85,10 @@ const App = () => {
             <Main />
           </Route>
           <Route path='/movies'>
-            <Movies onInputSearchError={onInputSearchError} />
+            <Movies
+              onInputSearchError={onInputSearchError}
+              errorGetMoviesPopupOpen={errorGetMoviesPopupOpen}
+            />
           </Route>
           <Route path='/saved-movies'>
             <SavedMovies />

@@ -5,9 +5,11 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import ButtonMore from '../ButtonMore/ButtonMore';
 import { moviesApi } from '../../utils/MoviesApi';
+import Preloader from '../Preloader/Preloader';
 
-const Movies = ({ onInputSearchError }) => {
+const Movies = ({ onInputSearchError, errorGetMoviesPopupOpen }) => {
   const [isInitialPage, setIsInitialPage] = useState(true);
+  const [isPreloaderEnabled, setIsPreloaderEnabled] = useState(false);
   const [movies, setMovies] = useState([]);
   const checkTextIncludes = (str, substr) => str.toLowerCase().includes(substr);
   const filterMovies = (dataMovies, name) => {
@@ -17,15 +19,32 @@ const Movies = ({ onInputSearchError }) => {
         checkTextIncludes(movie.nameRU, name)
     );
     setMovies([...foundMovies]);
+    localStorage.setItem('foundMovies', foundMovies);
     setIsInitialPage(false);
   };
   const handleSearchSubmit = (name) => {
     moviesApi
       .getMovies()
       .then((dataMovies) => {
+        setIsPreloaderEnabled(true);
         filterMovies(dataMovies, name);
       })
-      .catch((err) => console.log(err));
+      .catch(() => errorGetMoviesPopupOpen())
+      .finally(() => {
+        setIsPreloaderEnabled(false);
+      });
+  };
+  const renderMovies = () => {
+    if (isPreloaderEnabled) {
+      return <Preloader />;
+    }
+    return movies.length == 0 && !isInitialPage ? (
+      <h2 className='movies__card-list-title'>Ничего не найдено</h2>
+    ) : (
+      movies.slice(0, 5).map((movie) => {
+        return <MoviesCard movie={movie} key={movie.id} />;
+      })
+    );
   };
 
   return (
@@ -33,16 +52,9 @@ const Movies = ({ onInputSearchError }) => {
       <SearchForm
         onSubmit={handleSearchSubmit}
         onInputSearchError={onInputSearchError}
+        isStorageSave={true}
       />
-      <MoviesCardList>
-        {movies.length == 0 && !isInitialPage ? (
-          <h2 className='movies__card-list-title'>Ничего не найдено</h2>
-        ) : (
-          movies.slice(0, 5).map((movie) => {
-            return <MoviesCard movie={movie} key={movie.id} />;
-          })
-        )}
-      </MoviesCardList>
+      <MoviesCardList>{renderMovies()}</MoviesCardList>
       <ButtonMore></ButtonMore>
     </main>
   );
