@@ -7,6 +7,7 @@ const AuthSubmit = ({
   textPreLink,
   textLink,
   isProfile = false,
+  isValid,
   urlLinkSubmit,
 }) => {
   const classContainer = `auth__submit-container${
@@ -22,7 +23,7 @@ const AuthSubmit = ({
 
   return (
     <div className={classContainer}>
-      <button className={classButton} type='button'>
+      <button className={classButton} disabled={!isValid} type='submit'>
         {textButton}
       </button>
       <p className={classText}>

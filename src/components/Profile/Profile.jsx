@@ -4,24 +4,36 @@ import '../Auth/Auth.scss';
 import AuthTitle from '../AuthTitle/AuthTitle';
 import AuthInput from '../AuthInput/AuthInput';
 import AuthSubmit from '../AuthSubmit/AuthSubmit';
+import useForm from '../../utils/hooks/useForm';
 
 const Profile = () => {
+  const form = useForm();
   return (
     <>
       <AuthTitle title={`Привет, Виталий!`} isProfile={true} />
       <div className='auth__inputs auth__inputs_type_profile'>
         <AuthInput
-          name='Имя'
+          name='name'
+          nameText='Имя'
           idName='name'
           type='text'
           value={'Виталий'}
+          minLength='2'
+          maxLength='30'
+          errors={form.errors}
+          onChange={form.handleChange}
           isProfile={true}
         />
         <AuthInput
-          name='E-mail'
+          name='email'
+          nameText='E-mail'
           idName='email'
           type='email'
           value={'pochta@yandex.ru'}
+          minLength='4'
+          maxLength='30'
+          errors={form.errors}
+          onChange={form.handleChange}
           isProfile={true}
         />
       </div>
@@ -30,6 +42,7 @@ const Profile = () => {
         textPreLink=''
         textLink='Выйти из аккаунта'
         isProfile={true}
+        isValid={form.isValid}
         urlLinkSubmit='/signin'
       />
     </>

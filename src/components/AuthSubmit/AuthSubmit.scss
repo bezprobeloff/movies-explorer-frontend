@@ -25,6 +25,14 @@
       @include font_text(14px, 17px, white, 500);
     }
 
+    &:disabled {
+      background-color: $GRAY_ELEMENT;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
     &_type_profile {
       padding: 0;
       border: none;
@@ -34,6 +42,11 @@
 
       @media screen and (min-width: $PAD){
         @include font_text(13px, 16px);
+      }
+
+      &:disabled {
+        opacity: .2;
+        background-color: transparent;
       }
     }
   }
