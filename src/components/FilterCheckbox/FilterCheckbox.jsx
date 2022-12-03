@@ -1,9 +1,7 @@
 import React from 'react';
 import './FilterCheckbox.scss';
 
-const FilterCheckbox = ({ isStorageSave = false, isChecked, onChange }) => {
-  isStorageSave ? localStorage.setItem('checkbox', true) : '';
-
+const FilterCheckbox = ({ isChecked, onChange }) => {
   return (
     <label className='checkbox'>
       <input

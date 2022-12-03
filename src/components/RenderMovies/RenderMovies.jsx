@@ -4,19 +4,16 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 import { filterShortMovies } from '../../utils/utils';
 
 const RenderMovies = ({
-  isPreloaderEnabled,
+  isLoader,
   movies,
-  isInitialPage,
   isChecked,
   countMovies = movies.length,
 }) => {
-  const preloader = isPreloaderEnabled ? <Preloader /> : '';
-  const notFoundMovies =
-    movies.length == 0 && !isInitialPage ? (
-      <h2 className='movies__card-list-title'>Ничего не найдено</h2>
-    ) : (
-      ''
-    );
+  const preloader = isLoader ? <Preloader /> : '';
+  const notFoundMovies = (
+    <h2 className='movies__card-list-title'>Ничего не найдено</h2>
+  );
+
   const renderMovies = filterShortMovies(movies, isChecked)
     .slice(0, countMovies)
     .map((movie) => {
@@ -25,9 +22,11 @@ const RenderMovies = ({
 
   return (
     <>
-      {preloader}
-      {notFoundMovies}
-      {renderMovies}
+      {isLoader
+        ? preloader
+        : renderMovies.length === 0
+        ? notFoundMovies
+        : renderMovies}
     </>
   );
 };
