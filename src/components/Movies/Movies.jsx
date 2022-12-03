@@ -6,19 +6,21 @@ import ButtonMore from '../ButtonMore/ButtonMore';
 import { moviesApi } from '../../utils/MoviesApi';
 import RenderMovies from '../RenderMovies/RenderMovies';
 import { filterMovies } from '../../utils/utils';
+import useMoviesDiplay from '../../utils/hooks/useMoviesDiplay';
 
 const Movies = ({ onInputSearchError, errorGetMoviesPopupOpen }) => {
   const [isInitialPage, setIsInitialPage] = useState(true);
   const [isChecked, setIsChecked] = useState(false);
   const [isPreloaderEnabled, setIsPreloaderEnabled] = useState(false);
   const [movies, setMovies] = useState([]);
+  const moviesDisplay = useMoviesDiplay({ movies, isChecked });
 
   const handleSearchSubmit = (name) => {
     moviesApi
       .getMovies()
       .then((dataMovies) => {
         setIsPreloaderEnabled(true);
-        setMovies(filterMovies(dataMovies, name));
+        setMovies([...filterMovies(dataMovies, name)]);
         setIsInitialPage(false);
       })
       .catch(() => errorGetMoviesPopupOpen())
@@ -44,9 +46,14 @@ const Movies = ({ onInputSearchError, errorGetMoviesPopupOpen }) => {
           isInitialPage={isInitialPage}
           isPreloaderEnabled={isPreloaderEnabled}
           isChecked={isChecked}
+          countMovies={moviesDisplay.countMovies}
         />
       </MoviesCardList>
-      <ButtonMore></ButtonMore>
+      {moviesDisplay.isButtonMoreEnabled ? (
+        <ButtonMore onClick={moviesDisplay.handleButtonMore} />
+      ) : (
+        ''
+      )}
     </main>
   );
 };

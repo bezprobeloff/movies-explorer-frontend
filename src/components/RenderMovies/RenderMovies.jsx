@@ -8,6 +8,7 @@ const RenderMovies = ({
   movies,
   isInitialPage,
   isChecked,
+  countMovies = movies.length,
 }) => {
   const preloader = isPreloaderEnabled ? <Preloader /> : '';
   const notFoundMovies =
@@ -17,7 +18,7 @@ const RenderMovies = ({
       ''
     );
   const renderMovies = filterShortMovies(movies, isChecked)
-    .slice(0, 5)
+    .slice(0, countMovies)
     .map((movie) => {
       return <MoviesCard movie={movie} key={movie.id} />;
     });
