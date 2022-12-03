@@ -11,6 +11,13 @@
     }
   }
 
+  &__submit-error {
+    text-align: center;
+    padding-bottom: 20px;
+    min-height: 14px;
+    @include font_text(11px, 13px, $PINK);
+  }
+
   &__button-submit {
     padding: 15px;
     margin-bottom: 14px;
@@ -27,6 +34,7 @@
 
     &:disabled {
       background-color: $GRAY_ELEMENT;
+      color: #C2C2C2;;
 
       &:hover {
         opacity: 1;

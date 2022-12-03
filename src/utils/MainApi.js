@@ -12,6 +12,27 @@ class Api {
 
     return Promise.reject(`Ошибка: ${res.status}`);
   }
+  register = ({ name, email, password }) => {
+    return fetch(`${BASE_MAIN_URL}/signup`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email, password }),
+    }).then(this._checkResponse);
+  };
+
+  authorize = ({ email, password }) => {
+    return fetch(`${BASE_MAIN_URL}/signin`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    }).then(this._checkResponse);
+  };
 
   getUser() {
     return fetch(`${this._baseUrl}/users/me`, {
@@ -113,4 +134,4 @@ class Api {
   }
 }
 
-export const api = new Api(BASE_MAIN_URL);
+export const mainApi = new Api(BASE_MAIN_URL);

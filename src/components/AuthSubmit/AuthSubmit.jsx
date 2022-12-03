@@ -23,6 +23,9 @@ const AuthSubmit = ({
 
   return (
     <div className={classContainer}>
+      <span className='auth__submit-error'>
+        При обновлении профиля произошла ошибка.
+      </span>
       <button className={classButton} disabled={!isValid} type='submit'>
         {textButton}
       </button>

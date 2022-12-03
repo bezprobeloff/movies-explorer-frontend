@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.scss';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { mainApi } from '../../utils/MainApi';
 import Header from '../Header/Header';
 import Movies from '../Movies/Movies';
 import Footer from '../Footer/Footer';
@@ -18,11 +19,10 @@ const App = () => {
   const location = useLocation();
   const [currentUser, setCurrentUser] = useState({
     name: 'user',
-    about: 'about',
-    avatar: '',
     isLoggedIn: false,
     email: '',
   });
+  const [isTokenChecked, setIsTokenChecked] = useState(false);
   const [isFooterDisable, setIsFooterDisable] = useState(false);
   const [isHeaderDisable, setIsHeaderDisable] = useState(false);
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
@@ -34,6 +34,99 @@ const App = () => {
   });
   const routesFootersDisabled = ['/signin', '/signup', '/profile', '/404'];
   const routesHeaderDisabled = ['/404'];
+
+  /*
+  useEffect(() => {
+    if (currentUser.isLoggedIn && isTokenChecked) {
+      Promise.all([api.getUser(), api.getInitialCards()])
+        .then(([user, dataCards]) => {
+          setCurrentUser({ ...currentUser, ...user });
+          setCards([...dataCards]);
+        })
+        .then(() => history.push('/'))
+        .catch((err) => console.log(err));
+    }
+  }, [isTokenChecked, currentUser.isLoggedIn]);
+*/
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      checkToken(token);
+    } else {
+      setIsTokenChecked(true);
+    }
+  }, [currentUser.isLoggedIn]);
+
+  const onRegister = ({ name, email, password }) => {
+    return mainApi
+      .register({ name, email, password })
+      .then(() => {
+        setInfoTooltipProps({
+          ...infoTooltipProps,
+          message: 'Вы успешно зарегистрировались!',
+          isSuccess: true,
+        });
+
+        history.push('/signin');
+      })
+      .catch((res) =>
+        res.then((data) => {
+          setInfoTooltipProps({
+            ...infoTooltipProps,
+            message: data.error ?? 'Что-то пошло не так! Попробуйте ещё раз.',
+            isSuccess: false,
+          });
+        })
+      )
+      .finally(() => {
+        infoTooltipOpen();
+      });
+  };
+  /*
+  const onLogin = ({ email, password }) => {
+    return mainApi
+      .authorize({ email, password })
+      .then((data) => {
+        localStorage.setItem('token', data.token);
+        setCurrentUser({ ...currentUser, isLoggedIn: true });
+      })
+      .catch((res) => {
+        res.then((data) => {
+          setInfoTooltipProps({
+            ...infoTooltipProps,
+            message: data.message ?? 'Что-то пошло не так! Попробуйте ещё раз.',
+            isSuccess: false,
+          });
+          infoTooltipOpen();
+        });
+      });
+  };
+*/
+  /*
+  const onSignOut = () => {
+    localStorage.removeItem('token');
+    setIsTokenChecked(false);
+    setCurrentUser({ ...currentUser, isLoggedIn: false });
+    history.push('/signin');
+  };
+*/
+  // проверяем наличие токена, если все хорошо сразу логинимся
+  const checkToken = async (token) => {
+    mainApi
+      .getUser(token)
+      .then((res) => {
+        if (res) {
+          setCurrentUser({
+            ...currentUser,
+            isLoggedIn: true,
+            ...res,
+          });
+        }
+      })
+      .catch((err) => console.log(err))
+      .finally(() => setIsTokenChecked(true));
+  };
 
   const infoTooltipOpen = () => {
     setIsInfoTooltipOpen(true);

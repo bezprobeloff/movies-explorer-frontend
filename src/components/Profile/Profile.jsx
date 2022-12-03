@@ -22,7 +22,6 @@ const Profile = () => {
           minLength='2'
           maxLength='30'
           errors={form.errors}
-          pattern={PATTERN_EMAIL}
           onChange={form.handleChange}
           isProfile={true}
         />
@@ -35,6 +34,7 @@ const Profile = () => {
           minLength='4'
           maxLength='30'
           errors={form.errors}
+          pattern={PATTERN_EMAIL}
           onChange={form.handleChange}
           isProfile={true}
         />
