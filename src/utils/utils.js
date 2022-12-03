@@ -21,4 +21,11 @@ const filterShortMovies = (movies, isChecked) => {
   }
 };
 
-export { filterMovies, filterShortMovies };
+// duration в минутах
+const convertTime = (duration) => {
+  const hours = Math.trunc(duration / 60);
+  const minutes = duration % 60;
+  return `${hours === 0 ? '' : hours + 'ч '}` + `${minutes}м`;
+};
+
+export { filterMovies, filterShortMovies, convertTime };
