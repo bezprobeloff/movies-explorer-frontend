@@ -4,6 +4,7 @@ import AuthTitle from '../AuthTitle/AuthTitle';
 import AuthInput from '../AuthInput/AuthInput';
 import AuthSubmit from '../AuthSubmit/AuthSubmit';
 import useForm from '../../utils/hooks/useForm';
+import { PATTERN_EMAIL } from '../../utils/constants';
 
 const Register = () => {
   const form = useForm();
@@ -29,6 +30,7 @@ const Register = () => {
           type='email'
           minLength='4'
           maxLength='30'
+          pattern={PATTERN_EMAIL}
           errors={form.errors}
           onChange={form.handleChange}
           value={'pochta@yandex.ru'}

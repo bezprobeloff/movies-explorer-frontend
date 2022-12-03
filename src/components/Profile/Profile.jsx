@@ -5,6 +5,7 @@ import AuthTitle from '../AuthTitle/AuthTitle';
 import AuthInput from '../AuthInput/AuthInput';
 import AuthSubmit from '../AuthSubmit/AuthSubmit';
 import useForm from '../../utils/hooks/useForm';
+import { PATTERN_EMAIL } from '../../utils/constants';
 
 const Profile = () => {
   const form = useForm();
@@ -21,6 +22,7 @@ const Profile = () => {
           minLength='2'
           maxLength='30'
           errors={form.errors}
+          pattern={PATTERN_EMAIL}
           onChange={form.handleChange}
           isProfile={true}
         />

@@ -8,6 +8,7 @@ const AuthInput = ({
   type,
   minLength,
   maxLength,
+  pattern,
   onChange,
   errors,
   isProfile = false,
@@ -38,6 +39,7 @@ const AuthInput = ({
         type={type}
         minLength={minLength}
         maxLength={maxLength}
+        pattern={pattern}
         onChange={onChange}
         required
       />
