@@ -91,7 +91,10 @@ const App = () => {
             />
           </Route>
           <Route path='/saved-movies'>
-            <SavedMovies />
+            <SavedMovies
+              onInputSearchError={onInputSearchError}
+              errorGetMoviesPopupOpen={errorGetMoviesPopupOpen}
+            />
           </Route>
           <Route path='/profile'>
             <Auth isProfile={true}>

@@ -21,7 +21,7 @@ const Movies = ({ onInputSearchError, errorGetMoviesPopupOpen }) => {
     return localStorage.getItem('name') || '';
   };
 
-  const getMovies = (name) => {
+  const getMovies = (name = '') => {
     setIsLoader(true);
     moviesApi
       .getMovies()
