@@ -34,12 +34,26 @@ class Api {
     }).then(this._checkResponse);
   };
 
-  getUser() {
+  getUser(token) {
     return fetch(`${this._baseUrl}/users/me`, {
+      headers: {
+        authorization: `Bearer ${token && localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+    }).then(this._checkResponse);
+  }
+
+  updateUser({ name, email }) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: 'PATCH',
       headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+      }),
     }).then(this._checkResponse);
   }
 
@@ -117,19 +131,6 @@ class Api {
         authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json',
       },
-    }).then(this._checkResponse);
-  }
-
-  updateAvatar(avatar) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
-      method: 'PATCH',
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        avatar: avatar,
-      }),
     }).then(this._checkResponse);
   }
 }

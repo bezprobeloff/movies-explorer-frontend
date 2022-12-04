@@ -30,7 +30,6 @@ const Login = ({ isLoader, onLogin, errorSubmitApi }) => {
           errors={form.errors}
           pattern={PATTERN_EMAIL}
           onChange={form.handleChange}
-          value={'pochta@yandex.ru'}
         />
         <AuthInput
           name='password'
@@ -41,7 +40,6 @@ const Login = ({ isLoader, onLogin, errorSubmitApi }) => {
           maxLength='20'
           errors={form.errors}
           onChange={form.handleChange}
-          value={'pochta@yandex.ru'}
         />
       </div>
       <AuthSubmit

@@ -9,6 +9,7 @@ const AuthInput = ({
   minLength,
   maxLength,
   pattern,
+  value = '',
   onChange,
   errors,
   isProfile = false,
@@ -41,6 +42,7 @@ const AuthInput = ({
         maxLength={maxLength}
         pattern={pattern}
         onChange={onChange}
+        defaultValue={value}
         required
       />
       <span className={classInputError}>{errors[name]}</span>

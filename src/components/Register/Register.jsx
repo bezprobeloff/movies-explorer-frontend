@@ -31,7 +31,6 @@ const Register = ({ isLoader, onRegister, errorSubmitApi }) => {
           maxLength='30'
           onChange={form.handleChange}
           errors={form.errors}
-          value={'Виталий'}
         />
         <AuthInput
           name='email'
@@ -43,7 +42,6 @@ const Register = ({ isLoader, onRegister, errorSubmitApi }) => {
           pattern={PATTERN_EMAIL}
           errors={form.errors}
           onChange={form.handleChange}
-          value={'pochta@yandex.ru'}
         />
         <AuthInput
           name='password'
@@ -54,7 +52,6 @@ const Register = ({ isLoader, onRegister, errorSubmitApi }) => {
           maxLength='20'
           errors={form.errors}
           onChange={form.handleChange}
-          value={'pochta@yandex.ru'}
         />
       </div>
       <AuthSubmit

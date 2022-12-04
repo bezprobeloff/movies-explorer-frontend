@@ -25,12 +25,13 @@ const App = () => {
   const location = useLocation();
   const history = useHistory();
   const [currentUser, setCurrentUser] = useState({
-    name: 'user',
+    name: '',
     isLoggedIn: false,
     email: '',
+    _id: '',
   });
   const [isLoader, setIsLoader] = useState(false);
-  //  const [isTokenChecked, setIsTokenChecked] = useState(false);
+  const [isTokenChecked, setIsTokenChecked] = useState(false);
   const [errorSubmitApi, setErrorSubmitApi] = useState('');
   const [isFooterDisable, setIsFooterDisable] = useState(false);
   const [isHeaderDisable, setIsHeaderDisable] = useState(false);
@@ -44,20 +45,12 @@ const App = () => {
   const routesFootersDisabled = ['/signin', '/signup', '/profile', '/404'];
   const routesHeaderDisabled = ['/404'];
 
-  /*
   useEffect(() => {
     if (currentUser.isLoggedIn && isTokenChecked) {
-      Promise.all([api.getUser(), api.getInitialCards()])
-        .then(([user, dataCards]) => {
-          setCurrentUser({ ...currentUser, ...user });
-          setCards([...dataCards]);
-        })
-        .then(() => history.push('/'))
-        .catch((err) => console.log(err));
+      //history.push('/');
     }
   }, [isTokenChecked, currentUser.isLoggedIn]);
-*/
-  /*
+
   useEffect(() => {
     const token = localStorage.getItem('token');
 
@@ -67,7 +60,47 @@ const App = () => {
       setIsTokenChecked(true);
     }
   }, [currentUser.isLoggedIn]);
-*/
+
+  const getUser = (token) => {
+    return mainApi
+      .getUser(token)
+      .then((user) => {
+        setCurrentUser({ ...user, isLoggedIn: true });
+      })
+      .catch((res) => {
+        res.then((err) => {
+          onSignOut();
+          console.log(err.message);
+        });
+      });
+  };
+
+  const onUpdateUser = ({ email, name }) => {
+    setIsLoader(true);
+    return mainApi
+      .updateUser({ email, name })
+      .then((data) => {
+        setCurrentUser({ ...currentUser, name: data.name, email: data.email });
+        setInfoTooltipProps({
+          ...infoTooltipProps,
+          message: 'Данные успешно обновлены.',
+          buttonText: 'OK',
+          isError: false,
+          onSubmit: closePopup,
+        });
+        infoTooltipOpen();
+      })
+      .catch((res) => {
+        res.then((err) => {
+          console.log(err.message);
+          setErrorSubmitApi(err.message);
+        });
+      })
+      .finally(() => {
+        setIsLoader(false);
+      });
+  };
+
   const onLogin = ({ email, password }) => {
     setIsLoader(true);
     return mainApi
@@ -75,6 +108,7 @@ const App = () => {
       .then((data) => {
         localStorage.setItem('token', data.token);
         setCurrentUser({ ...currentUser, isLoggedIn: true });
+        getUser(data.token);
         history.push('/movies');
       })
       .catch((res) => {
@@ -108,15 +142,16 @@ const App = () => {
       });
   };
 
-  /*
   const onSignOut = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('name');
+    localStorage.removeItem('checkbox');
+    localStorage.removeItem('movies');
     setIsTokenChecked(false);
-    setCurrentUser({ ...currentUser, isLoggedIn: false });
-    history.push('/signin');
+    setCurrentUser({ name: '', isLoggedIn: false, email: '', _id: '' });
+    history.push('/');
   };
-*/
-  /*
+
   // проверяем наличие токена, если все хорошо сразу логинимся
   const checkToken = async (token) => {
     mainApi
@@ -133,7 +168,7 @@ const App = () => {
       .catch((err) => console.log(err))
       .finally(() => setIsTokenChecked(true));
   };
-*/
+
   const infoTooltipOpen = () => {
     setIsInfoTooltipOpen(true);
   };
@@ -197,7 +232,12 @@ const App = () => {
           </Route>
           <Route path='/profile'>
             <Auth isProfile={true}>
-              <Profile />
+              <Profile
+                isLoader={isLoader}
+                onSignOut={onSignOut}
+                onUpdateUser={onUpdateUser}
+                errorSubmitApi={errorSubmitApi}
+              />
             </Auth>
           </Route>
           <Route path='/signin'>
