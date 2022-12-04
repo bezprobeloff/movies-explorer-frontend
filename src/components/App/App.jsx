@@ -15,11 +15,11 @@ import {
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Main from '../Main/Main';
 import Profile from '../Profile/Profile';
-import Auth from '../Auth/Auth';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import NotFound from '../NotFound/NotFound';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 const App = () => {
   const location = useLocation();
@@ -44,12 +44,6 @@ const App = () => {
   });
   const routesFootersDisabled = ['/signin', '/signup', '/profile', '/404'];
   const routesHeaderDisabled = ['/404'];
-
-  useEffect(() => {
-    if (currentUser.isLoggedIn && isTokenChecked) {
-      //history.push('/');
-    }
-  }, [isTokenChecked, currentUser.isLoggedIn]);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -218,45 +212,45 @@ const App = () => {
           <Route exact path='/'>
             <Main />
           </Route>
-          <Route path='/movies'>
-            <Movies
-              onInputSearchError={onInputSearchError}
-              errorGetMoviesPopupOpen={errorGetMoviesPopupOpen}
-            />
-          </Route>
-          <Route path='/saved-movies'>
-            <SavedMovies
-              onInputSearchError={onInputSearchError}
-              errorGetMoviesPopupOpen={errorGetMoviesPopupOpen}
-            />
-          </Route>
-          <Route path='/profile'>
-            <Auth isProfile={true}>
-              <Profile
-                isLoader={isLoader}
-                onSignOut={onSignOut}
-                onUpdateUser={onUpdateUser}
-                errorSubmitApi={errorSubmitApi}
-              />
-            </Auth>
-          </Route>
+          <ProtectedRoute
+            path='/movies'
+            component={Movies}
+            onInputSearchError={onInputSearchError}
+            errorGetMoviesPopupOpen={errorGetMoviesPopupOpen}
+            isLoggedIn={currentUser.isLoggedIn}
+            isTokenChecked={isTokenChecked}
+          />
+          <ProtectedRoute
+            path='/saved-movies'
+            component={SavedMovies}
+            onInputSearchError={onInputSearchError}
+            errorGetMoviesPopupOpen={errorGetMoviesPopupOpen}
+            isLoggedIn={currentUser.isLoggedIn}
+            isTokenChecked={isTokenChecked}
+          />
+          <ProtectedRoute
+            path='/profile'
+            component={Profile}
+            isLoader={isLoader}
+            onSignOut={onSignOut}
+            onUpdateUser={onUpdateUser}
+            errorSubmitApi={errorSubmitApi}
+            isLoggedIn={currentUser.isLoggedIn}
+            isTokenChecked={isTokenChecked}
+          />
           <Route path='/signin'>
-            <Auth>
-              <Login
-                isLoader={isLoader}
-                onLogin={onLogin}
-                errorSubmitApi={errorSubmitApi}
-              />
-            </Auth>
+            <Login
+              isLoader={isLoader}
+              onLogin={onLogin}
+              errorSubmitApi={errorSubmitApi}
+            />
           </Route>
           <Route path='/signup'>
-            <Auth>
-              <Register
-                isLoader={isLoader}
-                onRegister={onRegister}
-                errorSubmitApi={errorSubmitApi}
-              />
-            </Auth>
+            <Register
+              isLoader={isLoader}
+              onRegister={onRegister}
+              errorSubmitApi={errorSubmitApi}
+            />
           </Route>
           <Route>
             <Redirect to='/404' />

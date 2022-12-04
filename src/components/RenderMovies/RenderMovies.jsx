@@ -1,5 +1,5 @@
 import React from 'react';
-import Preloader from '../Preloader/Preloader';
+//import Preloader from '../Preloader/Preloader';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import { filterShortMovies } from '../../utils/utils';
 
@@ -9,7 +9,7 @@ const RenderMovies = ({
   isChecked,
   countMovies = movies.length,
 }) => {
-  const preloader = isLoader ? <Preloader /> : '';
+  //const preloader = isLoader ? <Preloader /> : '';
   const notFoundMovies = (
     <h2 className='movies__card-list-title'>Ничего не найдено</h2>
   );
@@ -22,11 +22,11 @@ const RenderMovies = ({
 
   return (
     <>
-      {isLoader
-        ? preloader
-        : renderMovies.length === 0
-        ? notFoundMovies
-        : renderMovies}
+      {!isLoader
+        ? renderMovies.length === 0
+          ? notFoundMovies
+          : renderMovies
+        : ''}
     </>
   );
 };

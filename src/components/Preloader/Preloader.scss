@@ -50,15 +50,6 @@
     z-index: 0;
     padding: 20px;
     box-sizing: border-box;
-
-    @media screen and (min-width: $PAD){
-
-      grid-column: 1 / span 2;
-    }
-
-    @media screen and (min-width: $DESKTOP) {
-      grid-column: 1 / span 3;
-    }
 }
 
 .preloader__container {
