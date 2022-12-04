@@ -10,7 +10,7 @@ import { PATTERN_EMAIL } from '../../utils/constants';
 const Profile = () => {
   const form = useForm();
   return (
-    <>
+    <form className='auth__form auth__form_type_profile' noValidate>
       <AuthTitle title={`Привет, Виталий!`} isProfile={true} />
       <div className='auth__inputs auth__inputs_type_profile'>
         <AuthInput
@@ -47,7 +47,7 @@ const Profile = () => {
         isValid={form.isValid}
         urlLinkSubmit='/signin'
       />
-    </>
+    </form>
   );
 };
 

@@ -5,7 +5,13 @@ import { mainApi } from '../../utils/MainApi';
 import Header from '../Header/Header';
 import Movies from '../Movies/Movies';
 import Footer from '../Footer/Footer';
-import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
+import {
+  Redirect,
+  Route,
+  Switch,
+  useHistory,
+  useLocation,
+} from 'react-router-dom';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Main from '../Main/Main';
 import Profile from '../Profile/Profile';
@@ -17,12 +23,15 @@ import InfoTooltip from '../InfoTooltip/InfoTooltip';
 
 const App = () => {
   const location = useLocation();
+  const history = useHistory();
   const [currentUser, setCurrentUser] = useState({
     name: 'user',
     isLoggedIn: false,
     email: '',
   });
-  const [isTokenChecked, setIsTokenChecked] = useState(false);
+  const [isLoader, setIsLoader] = useState(false);
+  //  const [isTokenChecked, setIsTokenChecked] = useState(false);
+  const [errorSubmitApi, setErrorSubmitApi] = useState('');
   const [isFooterDisable, setIsFooterDisable] = useState(false);
   const [isHeaderDisable, setIsHeaderDisable] = useState(false);
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
@@ -48,6 +57,7 @@ const App = () => {
     }
   }, [isTokenChecked, currentUser.isLoggedIn]);
 */
+  /*
   useEffect(() => {
     const token = localStorage.getItem('token');
 
@@ -57,52 +67,47 @@ const App = () => {
       setIsTokenChecked(true);
     }
   }, [currentUser.isLoggedIn]);
-
-  const onRegister = ({ name, email, password }) => {
-    return mainApi
-      .register({ name, email, password })
-      .then(() => {
-        setInfoTooltipProps({
-          ...infoTooltipProps,
-          message: 'Вы успешно зарегистрировались!',
-          isSuccess: true,
-        });
-
-        history.push('/signin');
-      })
-      .catch((res) =>
-        res.then((data) => {
-          setInfoTooltipProps({
-            ...infoTooltipProps,
-            message: data.error ?? 'Что-то пошло не так! Попробуйте ещё раз.',
-            isSuccess: false,
-          });
-        })
-      )
-      .finally(() => {
-        infoTooltipOpen();
-      });
-  };
-  /*
+*/
   const onLogin = ({ email, password }) => {
+    setIsLoader(true);
     return mainApi
       .authorize({ email, password })
       .then((data) => {
         localStorage.setItem('token', data.token);
         setCurrentUser({ ...currentUser, isLoggedIn: true });
+        history.push('/movies');
       })
       .catch((res) => {
-        res.then((data) => {
-          setInfoTooltipProps({
-            ...infoTooltipProps,
-            message: data.message ?? 'Что-то пошло не так! Попробуйте ещё раз.',
-            isSuccess: false,
-          });
-          infoTooltipOpen();
+        res.then((err) => {
+          setErrorSubmitApi(err.message);
         });
+      })
+      .finally(() => {
+        setIsLoader(false);
       });
   };
-*/
+
+  const onRegister = ({ name, email, password }) => {
+    setIsLoader(true);
+    return mainApi
+      .register({ name, email, password })
+      .then(() => {
+        onLogin({ email, password });
+      })
+      .catch((res) => {
+        res.then((err) => {
+          if (err.statusCode === 400) {
+            setErrorSubmitApi('При регистрации пользователя произошла ошибка.');
+          } else {
+            setErrorSubmitApi(err.message);
+          }
+        });
+      })
+      .finally(() => {
+        setIsLoader(false);
+      });
+  };
+
   /*
   const onSignOut = () => {
     localStorage.removeItem('token');
@@ -111,6 +116,7 @@ const App = () => {
     history.push('/signin');
   };
 */
+  /*
   // проверяем наличие токена, если все хорошо сразу логинимся
   const checkToken = async (token) => {
     mainApi
@@ -127,7 +133,7 @@ const App = () => {
       .catch((err) => console.log(err))
       .finally(() => setIsTokenChecked(true));
   };
-
+*/
   const infoTooltipOpen = () => {
     setIsInfoTooltipOpen(true);
   };
@@ -196,12 +202,20 @@ const App = () => {
           </Route>
           <Route path='/signin'>
             <Auth>
-              <Login />
+              <Login
+                isLoader={isLoader}
+                onLogin={onLogin}
+                errorSubmitApi={errorSubmitApi}
+              />
             </Auth>
           </Route>
           <Route path='/signup'>
             <Auth>
-              <Register />
+              <Register
+                isLoader={isLoader}
+                onRegister={onRegister}
+                errorSubmitApi={errorSubmitApi}
+              />
             </Auth>
           </Route>
           <Route>

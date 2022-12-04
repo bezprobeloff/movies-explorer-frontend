@@ -8,6 +8,7 @@ const AuthSubmit = ({
   textLink,
   isProfile = false,
   isValid,
+  textInfoSubmit,
   urlLinkSubmit,
 }) => {
   const classContainer = `auth__submit-container${
@@ -23,9 +24,7 @@ const AuthSubmit = ({
 
   return (
     <div className={classContainer}>
-      <span className='auth__submit-error'>
-        При обновлении профиля произошла ошибка.
-      </span>
+      <span className='auth__submit-error'>{textInfoSubmit}</span>
       <button className={classButton} disabled={!isValid} type='submit'>
         {textButton}
       </button>

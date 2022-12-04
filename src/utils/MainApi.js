@@ -10,7 +10,7 @@ class Api {
       return res.json();
     }
 
-    return Promise.reject(`Ошибка: ${res.status}`);
+    return Promise.reject(res.json());
   }
   register = ({ name, email, password }) => {
     return fetch(`${BASE_MAIN_URL}/signup`, {

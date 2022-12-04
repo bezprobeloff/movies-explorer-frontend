@@ -6,10 +6,20 @@ import AuthSubmit from '../AuthSubmit/AuthSubmit';
 import useForm from '../../utils/hooks/useForm';
 import { PATTERN_EMAIL } from '../../utils/constants';
 
-const Register = () => {
+const Register = ({ isLoader, onRegister, errorSubmitApi }) => {
   const form = useForm();
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+
+    onRegister({
+      name: form.values.name,
+      email: form.values.email,
+      password: form.values.password,
+    });
+  };
   return (
-    <>
+    <form className='auth__form' onSubmit={handleSubmit} noValidate>
       <AuthTitle title={`Добро пожаловать!`} />
       <div className='auth__inputs'>
         <AuthInput
@@ -48,13 +58,16 @@ const Register = () => {
         />
       </div>
       <AuthSubmit
-        textButton='Зарегистрироваться'
+        textButton={`${
+          isLoader ? 'Идет регистрация...' : 'Зарегистрироваться'
+        }`}
         textPreLink='Уже зарегистрированы? '
         textLink='Войти'
         isValid={form.isValid}
+        textInfoSubmit={errorSubmitApi}
         urlLinkSubmit='/signin'
       />
-    </>
+    </form>
   );
 };
 
