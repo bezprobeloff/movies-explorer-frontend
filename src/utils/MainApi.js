@@ -1,4 +1,4 @@
-import { BASE_MAIN_URL } from './constants';
+import { BASE_IMAGE_URL, BASE_MAIN_URL } from './constants';
 
 class Api {
   constructor(baseUrl) {
@@ -57,22 +57,8 @@ class Api {
     }).then(this._checkResponse);
   }
 
-  setUserInfo({ name, about }) {
-    return fetch(`${this._baseUrl}/users/me`, {
-      method: 'PATCH',
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name: name,
-        about: about,
-      }),
-    }).then(this._checkResponse);
-  }
-
-  getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
+  getMovies() {
+    return fetch(`${this._baseUrl}/movies`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json',
@@ -80,53 +66,43 @@ class Api {
     }).then(this._checkResponse);
   }
 
-  createCard({ name, link }) {
-    return fetch(`${this._baseUrl}/cards`, {
+  createMovie({
+    country,
+    director,
+    duration,
+    year,
+    description,
+    image,
+    trailerLink,
+    id,
+    nameRU,
+    nameEN,
+  }) {
+    return fetch(`${this._baseUrl}/movies`, {
       method: 'POST',
       headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        name: name,
-        link: link,
+        country,
+        director,
+        duration,
+        year,
+        description,
+        image: BASE_IMAGE_URL + image.url,
+        trailerLink,
+        thumbnail: BASE_IMAGE_URL + image.formats.thumbnail.url,
+        movieId: id,
+        nameRU,
+        nameEN,
       }),
     }).then(this._checkResponse);
   }
 
-  removeCard(idCard) {
-    return fetch(`${this._baseUrl}/cards/${idCard}`, {
+  removeMovie(movie) {
+    return fetch(`${this._baseUrl}/movies/${movie._id}`, {
       method: 'DELETE',
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json',
-      },
-    }).then(this._checkResponse);
-  }
-
-  setLike(idCard) {
-    return fetch(`${this._baseUrl}/cards/${idCard}/likes`, {
-      method: 'PUT',
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json',
-      },
-    }).then(this._checkResponse);
-  }
-
-  removeLike(idCard) {
-    return fetch(`${this._baseUrl}/cards/${idCard}/likes`, {
-      method: 'DELETE',
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json',
-      },
-    }).then(this._checkResponse);
-  }
-
-  changeLikeCardStatus(idCard, like) {
-    return fetch(`${this._baseUrl}/cards/${idCard}/likes`, {
-      method: like ? 'PUT' : 'DELETE',
       headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json',

@@ -1,43 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './SavedMovies.scss';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
-import { moviesApi } from '../../utils/MoviesApi';
-import { filterMovies } from '../../utils/utils';
 import RenderMovies from '../RenderMovies/RenderMovies';
 import Preloader from '../Preloader/Preloader';
 
-const SavedMovies = ({ onInputSearchError, errorGetMoviesPopupOpen }) => {
+const SavedMovies = ({
+  movies,
+  isLoader,
+  unpinMovie,
+  onInputSearchError,
+  getMovies,
+}) => {
   const [isChecked, setIsChecked] = useState(false);
-  const [isLoader, setIsLoader] = useState(false);
-  const [movies, setMovies] = useState([]);
 
-  const getMovies = (name = '') => {
-    setIsLoader(true);
-    moviesApi
-      .getMovies()
-      .then((dataMovies) => {
-        setMovies([...filterMovies(dataMovies, name)]);
-      })
-      .catch(() => errorGetMoviesPopupOpen())
-      .finally(() => {
-        setIsLoader(false);
-      });
-  };
   const handleSearchSubmit = (name) => {
     getMovies(name);
   };
-
-  useEffect(() => {
-    getMovies();
-  }, []);
 
   const handleInputChecked = (evt) => {
     setIsChecked(evt.target.checked);
   };
 
   return (
-    <main className='movies'>
+    <main className='movies movies_type_saved'>
       <SearchForm
         onSubmit={handleSearchSubmit}
         isChecked={isChecked}
@@ -48,6 +34,7 @@ const SavedMovies = ({ onInputSearchError, errorGetMoviesPopupOpen }) => {
       <MoviesCardList>
         <RenderMovies
           movies={movies}
+          unpinMovie={unpinMovie}
           isLoader={isLoader}
           isChecked={isChecked}
         />

@@ -20,6 +20,8 @@ import Register from '../Register/Register';
 import NotFound from '../NotFound/NotFound';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import { moviesApi } from '../../utils/MoviesApi';
+import { filterMovies } from '../../utils/utils';
 
 const App = () => {
   const location = useLocation();
@@ -42,8 +44,22 @@ const App = () => {
     buttonText: '',
     onSubmit: () => {},
   });
+  const [movies, setMovies] = useState([]);
+  const [savedMovies, setSavedMovies] = useState([]);
   const routesFootersDisabled = ['/signin', '/signup', '/profile', '/404'];
   const routesHeaderDisabled = ['/404'];
+
+  useEffect(() => {
+    if (isTokenChecked && currentUser.isLoggedIn) {
+      Promise.all([moviesApi.getMovies(), mainApi.getMovies()])
+        .then(([movies, savedMovies]) => {
+          setSavedMovies([...savedMovies]);
+          setMovies([...movies]);
+        })
+        .then(() => {})
+        .catch((err) => console.log(err));
+    }
+  }, [isTokenChecked, currentUser.isLoggedIn]);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -146,6 +162,54 @@ const App = () => {
     history.push('/');
   };
 
+  const getSavedMovies = (name = '') => {
+    return mainApi
+      .getMovies()
+      .then((data) => {
+        setSavedMovies([...filterMovies(data, name)]);
+      })
+      .catch((res) => {
+        res.then((err) => {
+          console.log(err.message);
+        });
+      });
+  };
+
+  const getMovies = (name = '') => {
+    setIsLoader(true);
+    moviesApi
+      .getMovies()
+      .then((dataMovies) => {
+        setMovies([...filterMovies(dataMovies, name)]);
+      })
+      .catch(() => errorGetMoviesPopupOpen())
+      .finally(() => {
+        setIsLoader(false);
+      });
+  };
+
+  const createMovie = (movie) => {
+    return mainApi
+      .createMovie({ ...movie })
+      .then(() => getSavedMovies())
+      .catch((res) => {
+        res.then((err) => {
+          console.log(err.message);
+        });
+      });
+  };
+
+  const removeMovie = (movie) => {
+    return mainApi
+      .removeMovie(movie)
+      .then(() => getSavedMovies())
+      .catch((res) => {
+        res.then((err) => {
+          console.log(err.message);
+        });
+      });
+  };
+
   // проверяем наличие токена, если все хорошо сразу логинимся
   const checkToken = async (token) => {
     mainApi
@@ -216,15 +280,21 @@ const App = () => {
             path='/movies'
             component={Movies}
             onInputSearchError={onInputSearchError}
-            errorGetMoviesPopupOpen={errorGetMoviesPopupOpen}
+            movies={movies}
+            savedMovies={savedMovies}
+            getMovies={getMovies}
+            pinMovie={createMovie}
+            unpinMovie={removeMovie}
             isLoggedIn={currentUser.isLoggedIn}
             isTokenChecked={isTokenChecked}
           />
           <ProtectedRoute
             path='/saved-movies'
             component={SavedMovies}
+            getMovies={getSavedMovies}
+            movies={savedMovies}
+            unpinMovie={removeMovie}
             onInputSearchError={onInputSearchError}
-            errorGetMoviesPopupOpen={errorGetMoviesPopupOpen}
             isLoggedIn={currentUser.isLoggedIn}
             isTokenChecked={isTokenChecked}
           />

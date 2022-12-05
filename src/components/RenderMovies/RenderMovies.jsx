@@ -5,7 +5,10 @@ import { filterShortMovies } from '../../utils/utils';
 const RenderMovies = ({
   isLoader,
   movies,
+  savedMovies,
   isChecked,
+  pinMovie,
+  unpinMovie,
   countMovies = movies.length,
 }) => {
   const notFoundMovies = (
@@ -15,7 +18,15 @@ const RenderMovies = ({
   const renderMovies = filterShortMovies(movies, isChecked)
     .slice(0, countMovies)
     .map((movie) => {
-      return <MoviesCard movie={movie} key={movie.id} />;
+      return (
+        <MoviesCard
+          movie={movie}
+          savedMovies={savedMovies}
+          pinMovie={pinMovie}
+          unpinMovie={unpinMovie}
+          key={movie.id || movie._id}
+        />
+      );
     });
 
   return (

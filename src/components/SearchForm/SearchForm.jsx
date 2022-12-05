@@ -11,7 +11,7 @@ const SearchForm = ({
   initialName = '',
   isChecked,
 }) => {
-  const searchInput = useInput({});
+  const searchInput = useInput({ inputValue: initialName });
   const location = useLocation();
 
   const handleSubmit = (evt) => {
