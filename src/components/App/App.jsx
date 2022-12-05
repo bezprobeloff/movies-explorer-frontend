@@ -207,7 +207,7 @@ const App = () => {
   return (
     <div className='App'>
       <CurrentUserContext.Provider value={currentUser}>
-        {isHeaderDisable ? '' : <Header />}
+        {isHeaderDisable ? '' : <Header isLoggedIn={currentUser.isLoggedIn} />}
         <Switch>
           <Route exact path='/'>
             <Main />
