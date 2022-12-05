@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './SearchForm.scss';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import useInput from '../../utils/hooks/useInput';
@@ -11,8 +11,12 @@ const SearchForm = ({
   initialName = '',
   isChecked,
 }) => {
-  const searchInput = useInput({ inputValue: initialName });
+  const searchInput = useInput({});
   const location = useLocation();
+
+  useEffect(() => {
+    searchInput.setValue(initialName);
+  }, []);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();

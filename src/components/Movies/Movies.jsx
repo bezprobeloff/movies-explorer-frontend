@@ -17,7 +17,6 @@ const Movies = ({
   onInputSearchError,
 }) => {
   const [isChecked, setIsChecked] = useState(false);
-  const [initalName, setInitalName] = useState('');
   const moviesDisplay = useMoviesDiplay({ movies, isChecked });
 
   const initialCheckbox = () => {
@@ -28,13 +27,11 @@ const Movies = ({
   };
 
   const handleSearchSubmit = (name) => {
-    localStorage.setItem('name', name);
     getMovies(name);
   };
 
   useEffect(() => {
     setIsChecked(initialCheckbox());
-    setInitalName(initialNameValue());
   }, []);
 
   const handleInputChecked = (evt) => {
@@ -48,7 +45,7 @@ const Movies = ({
         onSubmit={handleSearchSubmit}
         isChecked={isChecked}
         onInputSearchError={onInputSearchError}
-        initialName={initalName}
+        initialName={initialNameValue()}
         handleInputChecked={handleInputChecked}
       />
       {isLoader ? <Preloader /> : ''}

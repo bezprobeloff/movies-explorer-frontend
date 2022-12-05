@@ -48,16 +48,14 @@ const App = () => {
   const [savedMovies, setSavedMovies] = useState([]);
   const routesFootersDisabled = ['/signin', '/signup', '/profile', '/404'];
   const routesHeaderDisabled = ['/404'];
+  const initialNameValue = () => {
+    return localStorage.getItem('name') || '';
+  };
 
   useEffect(() => {
     if (isTokenChecked && currentUser.isLoggedIn) {
-      Promise.all([moviesApi.getMovies(), mainApi.getMovies()])
-        .then(([movies, savedMovies]) => {
-          setSavedMovies([...savedMovies]);
-          setMovies([...movies]);
-        })
-        .then(() => {})
-        .catch((err) => console.log(err));
+      getMovies(initialNameValue());
+      getSavedMovies();
     }
   }, [isTokenChecked, currentUser.isLoggedIn]);
 
