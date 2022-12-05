@@ -231,7 +231,6 @@ const App = () => {
     setIsInfoTooltipOpen(true);
   };
   const closePopup = () => {
-    setCurrentUser({ name: 'user' });
     setIsInfoTooltipOpen(false);
   };
   const onInputSearchError = () => {
