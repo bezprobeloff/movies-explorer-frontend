@@ -293,7 +293,6 @@ const App = () => {
           <ProtectedRoute
             path='/saved-movies'
             component={SavedMovies}
-            getMovies={getSavedMovies}
             movies={savedMovies}
             unpinMovie={removeMovie}
             onInputSearchError={onInputSearchError}

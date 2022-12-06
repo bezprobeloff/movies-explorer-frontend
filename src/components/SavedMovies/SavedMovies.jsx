@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './SavedMovies.scss';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
 import RenderMovies from '../RenderMovies/RenderMovies';
 import Preloader from '../Preloader/Preloader';
+import { filterMovies } from '../../utils/utils';
 
-const SavedMovies = ({
-  movies,
-  isLoader,
-  unpinMovie,
-  onInputSearchError,
-  getMovies,
-}) => {
+const SavedMovies = ({ movies, isLoader, unpinMovie, onInputSearchError }) => {
   const [isChecked, setIsChecked] = useState(false);
+  const [foundMovies, setFoundMovies] = useState([]);
 
   const handleSearchSubmit = (name) => {
-    getMovies(name);
+    setFoundMovies(filterMovies(movies, name));
   };
 
   const handleInputChecked = (evt) => {
     setIsChecked(evt.target.checked);
   };
+
+  useEffect(() => {
+    setFoundMovies(movies);
+  }, [movies]);
 
   return (
     <main className='movies movies_type_saved'>
@@ -33,7 +33,7 @@ const SavedMovies = ({
       {isLoader ? <Preloader /> : ''}
       <MoviesCardList>
         <RenderMovies
-          movies={movies}
+          movies={foundMovies}
           unpinMovie={unpinMovie}
           isLoader={isLoader}
           isChecked={isChecked}
