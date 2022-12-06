@@ -154,7 +154,6 @@ const App = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('name');
     localStorage.removeItem('checkbox');
-    localStorage.removeItem('movies');
     setIsTokenChecked(false);
     setCurrentUser({ name: '', isLoggedIn: false, email: '', _id: '' });
     history.push('/');

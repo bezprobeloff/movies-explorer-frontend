@@ -34,11 +34,12 @@
 
     &:disabled {
       background-color: $GRAY_ELEMENT;
-      color: #C2C2C2;;
+      color: #C2C2C2;
 
       &:hover {
         opacity: 1;
       }
+
     }
 
     &_type_profile {
@@ -55,6 +56,10 @@
       &:disabled {
         opacity: .2;
         background-color: transparent;
+
+        &:hover {
+          opacity: .2;
+        }
       }
     }
   }

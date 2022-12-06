@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Profile.scss';
 import '../Auth/Auth.scss';
 import AuthTitle from '../Auth/AuthTitle/AuthTitle';
@@ -10,11 +10,19 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 const Profile = ({ isLoader, onSignOut, onUpdateUser, errorSubmitApi }) => {
   const form = useForm();
+  const [isValid, setIsValid] = useState(false);
   const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
     form.resetForm(currentUser);
   }, [currentUser]);
+
+  useEffect(() => {
+    const isDisabled =
+      form.values.name === currentUser.name &&
+      form.values.email === currentUser.email;
+    setIsValid(form.isValid && !isDisabled);
+  }, [form.values]);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -67,7 +75,7 @@ const Profile = ({ isLoader, onSignOut, onUpdateUser, errorSubmitApi }) => {
           isProfile={true}
           onSignOut={onSignOut}
           textInfoSubmit={errorSubmitApi}
-          isValid={form.isValid}
+          isValid={isValid}
           urlLinkSubmit='/signin'
         />
       </form>
