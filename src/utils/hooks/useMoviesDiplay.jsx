@@ -9,9 +9,9 @@ import {
   INITIAL_COUNT_MOVIES_PAD,
   PAD_WIDTH,
 } from '../constants';
-import { filterShortMovies } from '../utils';
+import { filterShortMovies, filterMovies } from '../utils';
 
-const useMoviesDiplay = ({ movies, isChecked }) => {
+const useMoviesDiplay = ({ movies, isChecked, initialName }) => {
   const [windowSize, setWindowsSize] = useState(window.screen.width);
   const [countMovies, setCountMovies] = useState(0);
   const [isButtonMoreEnabled, setIsButtonMoreEnabled] = useState(false);
@@ -38,11 +38,12 @@ const useMoviesDiplay = ({ movies, isChecked }) => {
   }, [windowSize, movies]);
 
   useEffect(() => {
-    const filterMovies = filterShortMovies(movies, isChecked);
-    filterMovies.length > countMovies
+    const foundMovies = filterMovies(movies, initialName);
+    const filterIsCheckedMovies = filterShortMovies(foundMovies, isChecked);
+    filterIsCheckedMovies.length > countMovies
       ? setIsButtonMoreEnabled(true)
       : setIsButtonMoreEnabled(false);
-  }, [countMovies, movies, isChecked]);
+  }, [countMovies, movies, isChecked, initialName]);
 
   const handleButtonMore = () => {
     if (windowSize >= DESKTOP_WIDTH) {
