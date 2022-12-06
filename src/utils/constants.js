@@ -11,7 +11,9 @@ const INITIAL_COUNT_MOVIES_MOBILE = 5;
 const COUNT_ADD_MOVIES_DESKTOP = 3;
 const COUNT_ADD_MOVIES_PAD = 2;
 const COUNT_ADD_MOVIES_MOBILE = 2;
-const PATTERN_EMAIL = '([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})';
+const PATTERN_EMAIL =
+  '^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@' +
+  '[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$';
 
 export {
   BASE_MAIN_URL,
