@@ -48,12 +48,15 @@ const App = () => {
   const [savedMovies, setSavedMovies] = useState([]);
   const routesFootersDisabled = ['/signin', '/signup', '/profile', '/404'];
   const routesHeaderDisabled = ['/404'];
+  const routesRedirectLogined = ['/signin', '/signup'];
   const initialNameValue = () => {
     return localStorage.getItem('name') || '';
   };
 
   useEffect(() => {
     if (isTokenChecked && currentUser.isLoggedIn) {
+      routesRedirectLogined.includes(location.pathname) &&
+        history.push('/movies');
       getMovies(initialNameValue());
       getSavedMovies();
     }
