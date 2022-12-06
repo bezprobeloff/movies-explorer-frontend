@@ -11,7 +11,7 @@ import {
 } from '../constants';
 import { filterShortMovies, filterMovies } from '../utils';
 
-const useMoviesDiplay = ({ movies, isChecked, initialName }) => {
+const useMoviesDisplay = ({ movies, isChecked, initialName }) => {
   const [windowSize, setWindowsSize] = useState(window.screen.width);
   const [countMovies, setCountMovies] = useState(0);
   const [isButtonMoreEnabled, setIsButtonMoreEnabled] = useState(false);
@@ -58,4 +58,4 @@ const useMoviesDiplay = ({ movies, isChecked, initialName }) => {
   return { countMovies, isButtonMoreEnabled, handleButtonMore };
 };
 
-export default useMoviesDiplay;
+export default useMoviesDisplay;
