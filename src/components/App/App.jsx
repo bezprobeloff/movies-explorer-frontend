@@ -223,7 +223,10 @@ const App = () => {
           });
         }
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        onSignOut();
+        console.log(err);
+      })
       .finally(() => setIsTokenChecked(true));
   };
 
