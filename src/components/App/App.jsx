@@ -54,12 +54,9 @@ const App = () => {
     if (isTokenChecked && currentUser.isLoggedIn) {
       routesRedirectLogined.includes(location.pathname) &&
         history.push('/movies');
-      if (location.pathname === '/movies') {
-        getMovies();
-        getSavedMovies();
-      } else if (location.pathname === '/saved-movies') {
-        getSavedMovies();
-      }
+
+      getMovies();
+      getSavedMovies();
     }
   }, [isTokenChecked, currentUser.isLoggedIn]);
 
