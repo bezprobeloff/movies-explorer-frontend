@@ -21,8 +21,8 @@ const Profile = ({ isLoader, onSignOut, onUpdateUser, errorSubmitApi }) => {
     const isDisabled =
       form.values.name === currentUser.name &&
       form.values.email === currentUser.email;
-    setIsValid(form.isValid && !isDisabled);
-  }, [form.values]);
+    setIsValid(form.isValid && !isDisabled && !isLoader);
+  }, [form.values, isLoader]);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -53,6 +53,7 @@ const Profile = ({ isLoader, onSignOut, onUpdateUser, errorSubmitApi }) => {
             errors={form.errors}
             onChange={form.handleChange}
             isProfile={true}
+            isDisabled={isLoader}
           />
           <AuthInput
             name='email'
@@ -64,6 +65,7 @@ const Profile = ({ isLoader, onSignOut, onUpdateUser, errorSubmitApi }) => {
             value={currentUser.email}
             errors={form.errors}
             pattern={PATTERN_EMAIL}
+            isDisabled={isLoader}
             onChange={form.handleChange}
             isProfile={true}
           />

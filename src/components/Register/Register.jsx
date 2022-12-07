@@ -32,6 +32,7 @@ const Register = ({ isLoader, onRegister, errorSubmitApi }) => {
             maxLength='30'
             onChange={form.handleChange}
             errors={form.errors}
+            isDisabled={isLoader}
           />
           <AuthInput
             name='email'
@@ -42,6 +43,7 @@ const Register = ({ isLoader, onRegister, errorSubmitApi }) => {
             maxLength='30'
             pattern={PATTERN_EMAIL}
             errors={form.errors}
+            isDisabled={isLoader}
             onChange={form.handleChange}
           />
           <AuthInput
@@ -52,6 +54,7 @@ const Register = ({ isLoader, onRegister, errorSubmitApi }) => {
             minLength='8'
             maxLength='20'
             errors={form.errors}
+            isDisabled={isLoader}
             onChange={form.handleChange}
           />
         </div>
@@ -61,7 +64,7 @@ const Register = ({ isLoader, onRegister, errorSubmitApi }) => {
           }`}
           textPreLink='Уже зарегистрированы? '
           textLink='Войти'
-          isValid={form.isValid}
+          isValid={form.isValid && !isLoader}
           textInfoSubmit={errorSubmitApi}
           urlLinkSubmit='/signin'
         />

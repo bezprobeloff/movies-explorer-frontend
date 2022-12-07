@@ -33,6 +33,9 @@ const App = () => {
     _id: '',
   });
   const [isLoader, setIsLoader] = useState(false);
+  const [isProfileLoader, setIsProfileLoader] = useState(false);
+  const [isLoginLoader, setIsLoginLoader] = useState(false);
+  const [isRegisterLoader, setIsRegisterLoader] = useState(false);
   const [isTokenChecked, setIsTokenChecked] = useState(false);
   const [errorSubmitApi, setErrorSubmitApi] = useState('');
   const [isFooterDisable, setIsFooterDisable] = useState(false);
@@ -85,7 +88,7 @@ const App = () => {
   };
 
   const onUpdateUser = ({ email, name }) => {
-    setIsLoader(true);
+    setIsProfileLoader(true);
     return mainApi
       .updateUser({ email, name })
       .then((data) => {
@@ -106,12 +109,12 @@ const App = () => {
         });
       })
       .finally(() => {
-        setIsLoader(false);
+        setIsProfileLoader(false);
       });
   };
 
   const onLogin = ({ email, password }) => {
-    setIsLoader(true);
+    setIsLoginLoader(true);
     return mainApi
       .authorize({ email, password })
       .then((data) => {
@@ -126,12 +129,12 @@ const App = () => {
         });
       })
       .finally(() => {
-        setIsLoader(false);
+        setIsLoginLoader(false);
       });
   };
 
   const onRegister = ({ name, email, password }) => {
-    setIsLoader(true);
+    setIsRegisterLoader(true);
     return mainApi
       .register({ name, email, password })
       .then(() => {
@@ -147,7 +150,7 @@ const App = () => {
         });
       })
       .finally(() => {
-        setIsLoader(false);
+        setIsRegisterLoader(false);
       });
   };
 
@@ -281,6 +284,7 @@ const App = () => {
             component={Movies}
             onInputSearchError={onInputSearchError}
             movies={movies}
+            isLoader={isLoader}
             savedMovies={savedMovies}
             getMovies={getMovies}
             pinMovie={createMovie}
@@ -292,6 +296,7 @@ const App = () => {
             path='/saved-movies'
             component={SavedMovies}
             movies={savedMovies}
+            isLoader={isLoader}
             unpinMovie={removeMovie}
             onInputSearchError={onInputSearchError}
             isLoggedIn={currentUser.isLoggedIn}
@@ -300,7 +305,7 @@ const App = () => {
           <ProtectedRoute
             path='/profile'
             component={Profile}
-            isLoader={isLoader}
+            isLoader={isProfileLoader}
             onSignOut={onSignOut}
             onUpdateUser={onUpdateUser}
             errorSubmitApi={errorSubmitApi}
@@ -309,14 +314,14 @@ const App = () => {
           />
           <Route path='/signin'>
             <Login
-              isLoader={isLoader}
+              isLoader={isLoginLoader}
               onLogin={onLogin}
               errorSubmitApi={errorSubmitApi}
             />
           </Route>
           <Route path='/signup'>
             <Register
-              isLoader={isLoader}
+              isLoader={isRegisterLoader}
               onRegister={onRegister}
               errorSubmitApi={errorSubmitApi}
             />

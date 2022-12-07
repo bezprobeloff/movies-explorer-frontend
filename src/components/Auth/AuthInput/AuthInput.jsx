@@ -12,6 +12,7 @@ const AuthInput = ({
   value = '',
   onChange,
   errors,
+  isDisabled = false,
   isProfile = false,
 }) => {
   const classContainer = `auth__input-container${
@@ -43,6 +44,7 @@ const AuthInput = ({
         pattern={pattern}
         onChange={onChange}
         defaultValue={value}
+        disabled={isDisabled}
         required
       />
       <span className={classInputError}>{errors[name]}</span>
