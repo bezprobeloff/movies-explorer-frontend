@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@import '../../../styles/variables';
 
 .auth {
   &__input-container {
@@ -34,7 +34,13 @@
     border-bottom: 1px solid $GRAY_ELEMENT;
 
     &:focus {
+      border-bottom: 1px solid $ORANGE;
       outline: none;
+    }
+
+    &_type_error {
+      border-bottom: 1px solid $PINK;
+      color: $PINK;
     }
 
     &_type_profile {

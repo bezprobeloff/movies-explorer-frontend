@@ -1,10 +1,20 @@
 import React from 'react';
 import './AuthInput.scss';
-import useInput from '../../utils/hooks/useInput';
 
-const AuthInput = ({ name, idName, type, value, isProfile = false }) => {
-  const input = useInput({ inputValue: value });
-
+const AuthInput = ({
+  name,
+  nameText,
+  idName,
+  type,
+  minLength,
+  maxLength,
+  pattern,
+  value = '',
+  onChange,
+  errors,
+  isDisabled = false,
+  isProfile = false,
+}) => {
   const classContainer = `auth__input-container${
     isProfile ? ' auth__input-container_type_profile' : ''
   }`;
@@ -13,7 +23,7 @@ const AuthInput = ({ name, idName, type, value, isProfile = false }) => {
   }`;
   const classInput = `auth__input${
     isProfile ? ' auth__input_type_profile' : ''
-  }`;
+  }${errors[name] ? ' auth__input_type_error' : ''}`;
   const classInputError = `auth__input-error${
     isProfile ? ' auth__input-error_type_profile' : ''
   }`;
@@ -21,17 +31,23 @@ const AuthInput = ({ name, idName, type, value, isProfile = false }) => {
   return (
     <div className={classContainer}>
       <label className={classLabel} htmlFor={`auth-${idName}`}>
-        {name}
+        {nameText}
       </label>
       <input
         className={classInput}
+        name={name}
         id={`auth-${idName}`}
-        placeholder={name}
+        placeholder={nameText}
         type={type}
-        value={input.value}
-        onChange={input.onChange}
+        minLength={minLength}
+        maxLength={maxLength}
+        pattern={pattern}
+        onChange={onChange}
+        defaultValue={value}
+        disabled={isDisabled}
+        required
       />
-      <span className={classInputError}>Что-то пошло не так</span>
+      <span className={classInputError}>{errors[name]}</span>
     </div>
   );
 };

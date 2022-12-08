@@ -21,4 +21,19 @@
     column-gap: 24px;
     row-gap: 30px;
   }
+
+  &-title {
+    margin: 0;
+    @include font_text(20px, 23px, black, 500 );
+    text-align: center;
+
+    @media screen and (min-width: $PAD){
+      @include font_text(30px, 33px, black, 500 );
+      grid-column: 1 / span 2;
+    }
+
+    @media screen and (min-width: $DESKTOP) {
+      grid-column: 1 / span 3;
+    }
+  }
 }

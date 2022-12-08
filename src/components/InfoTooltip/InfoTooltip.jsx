@@ -1,16 +1,32 @@
 import React from 'react';
 import Popup from '../Popup/Popup';
 
-const InfoTooltip = ({ name, isSuccess, message, isOpen, onClose }) => {
-  const classIconType = isSuccess
-    ? ' popup__icon_type_accept'
-    : ' popup__icon_type_error';
+const InfoTooltip = ({
+  name,
+  buttonText,
+  isError,
+  message,
+  isOpen,
+  onClose,
+  onSubmit,
+}) => {
+  const classMessage = `popup__message${
+    isError ? ' popup__message_type_error' : ''
+  }`;
+  const handleSubmit = () => {
+    onSubmit();
+  };
 
   return (
     <Popup name={name} isOpen={isOpen} onClose={onClose}>
       <div className='popup__info-container'>
-        <div className={`popup__icon${classIconType}`}></div>
-        <h3 className='popup__message'>{message}</h3>
+        <h3 className={classMessage}>{message}</h3>
+        <button
+          className={`popup__button popup__button_type_submit`}
+          onClick={handleSubmit}
+        >
+          {buttonText}
+        </button>
       </div>
     </Popup>
   );

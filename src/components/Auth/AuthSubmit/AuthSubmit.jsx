@@ -7,7 +7,10 @@ const AuthSubmit = ({
   textPreLink,
   textLink,
   isProfile = false,
+  isValid,
+  textInfoSubmit,
   urlLinkSubmit,
+  onSignOut,
 }) => {
   const classContainer = `auth__submit-container${
     isProfile ? ' auth__submit-container_type_profile' : ''
@@ -19,17 +22,25 @@ const AuthSubmit = ({
   const classLink = `link auth__link${
     isProfile ? ' auth__link_type_profile' : ''
   }`;
+  const linkTextUrl = isProfile ? (
+    <a onClick={onSignOut} className={classLink}>
+      {textLink}
+    </a>
+  ) : (
+    <Link to={urlLinkSubmit} className={classLink}>
+      {textLink}
+    </Link>
+  );
 
   return (
     <div className={classContainer}>
-      <button className={classButton} type='button'>
+      <span className='auth__submit-error'>{textInfoSubmit}</span>
+      <button className={classButton} disabled={!isValid} type='submit'>
         {textButton}
       </button>
       <p className={classText}>
         {textPreLink}
-        <Link to={urlLinkSubmit} className={classLink}>
-          {textLink}
-        </Link>
+        {linkTextUrl}
       </p>
     </div>
   );

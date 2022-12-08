@@ -94,6 +94,12 @@
       @include font_text(14px, 18px, black);
     }
 
+    &_type_main {
+      @media screen and (min-width: $DESKTOP){
+        color: white;
+      }
+    }
+
     &_type_active {
       @media screen
         and (min-width: $MOBILE)

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './HeaderNavigation.scss';
 import { NavLink } from 'react-router-dom';
 
-const HeaderNavigation = () => {
+const HeaderNavigation = ({ isMain }) => {
   const [isBurgerClose, setIsBurgerClose] = useState(true);
   const classBurgerMenu = isBurgerClose
     ? ' navigation__button-burger_type_close'
@@ -17,7 +17,9 @@ const HeaderNavigation = () => {
   const classNavigationAccountMenu = isBurgerClose
     ? ''
     : ' navigation__account_invisibled';
-  const classLink = 'link navigation__link';
+  const classLink = `link navigation__link${
+    isMain ? ' navigation__link_type_main' : ''
+  }`;
 
   const onButtonBurgerClick = () => {
     setIsBurgerClose((state) => !state);

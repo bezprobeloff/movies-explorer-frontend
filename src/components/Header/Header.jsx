@@ -5,7 +5,7 @@ import HeaderLogo from '../HeaderLogo/HeaderLogo';
 import { useLocation } from 'react-router-dom';
 import HeaderAuth from '../HeaderAuth/HeaderAuth';
 
-const Header = () => {
+const Header = ({ isLoggedIn }) => {
   const location = useLocation();
   const [isTypeAuth, setIsTypeAuth] = useState(false);
   const [isTypeMain, setIsTypeMain] = useState(false);
@@ -16,9 +16,9 @@ const Header = () => {
   useEffect(() => {
     location.pathname === '/' ? setIsTypeMain(true) : setIsTypeMain(false);
 
-    if (typesAuth.includes(location.pathname)) {
-      setIsTypeAuth(true);
-    }
+    typesAuth.includes(location.pathname)
+      ? setIsTypeAuth(true)
+      : setIsTypeAuth(false);
   }, [location.pathname]);
   return (
     <header className={classHeader}>
@@ -28,8 +28,13 @@ const Header = () => {
         }`}
       >
         <HeaderLogo />
-        {isTypeAuth || isTypeMain ? '' : <HeaderNavigation />}
-        {isTypeMain ? <HeaderAuth /> : ''}
+        {isTypeAuth ? (
+          ''
+        ) : isLoggedIn ? (
+          <HeaderNavigation isMain={isTypeMain} />
+        ) : (
+          <HeaderAuth />
+        )}
       </div>
     </header>
   );

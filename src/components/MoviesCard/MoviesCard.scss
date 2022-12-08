@@ -65,7 +65,9 @@
       }
     }
   }
-
+  &-trailerLink {
+    display: grid;
+  }
   &-image {
     width: 100%;
     object-fit: cover;
