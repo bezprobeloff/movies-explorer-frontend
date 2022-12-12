@@ -14,6 +14,17 @@ const COUNT_ADD_MOVIES_MOBILE = 2;
 const PATTERN_EMAIL =
   '^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@' +
   '[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$';
+const DATE_BIRTH = '1989-03-16';
+const getMeAge = () => {
+  const age = new Date(new Date() - new Date(DATE_BIRTH)).getFullYear() - 1970;
+  return `${age} ${
+    (age > 4 && age <= 20) || age % 5 == 0 || age % 10 > 5
+      ? 'лет'
+      : age == 1 || age % 10 == 1
+      ? 'год'
+      : 'года'
+  }`;
+};
 
 export {
   BASE_MAIN_URL,
@@ -30,4 +41,6 @@ export {
   COUNT_ADD_MOVIES_PAD,
   COUNT_ADD_MOVIES_MOBILE,
   PATTERN_EMAIL,
+  DATE_BIRTH,
+  getMeAge,
 };
