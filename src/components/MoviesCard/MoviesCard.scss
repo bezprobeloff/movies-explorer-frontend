@@ -2,23 +2,23 @@
 
 .movies__card {
   display: grid;
-  background-color: #FDFDFD;
+  background-color: #fdfdfd;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+  transition: 2s;
 
   &-info {
     padding: 14px;
     display: grid;
     grid-template-areas:
-    'movie-name movie-button'
-    'movie-duration movie-button'
-    ;
+      'movie-name movie-button'
+      'movie-duration movie-button';
   }
 
   &-name {
     margin: 0;
     padding-bottom: 9px;
     grid-area: movie-name;
-    @include font_text(15px, 18px, black , 500);
+    @include font_text(15px, 18px, black, 500);
   }
 
   &-duration {
@@ -34,7 +34,7 @@
     grid-area: movie-button;
     align-self: center;
     justify-self: end;
-    background-color: #F9F9F9;
+    background-color: #f9f9f9;
     border: none;
     border-radius: 50%;
 
@@ -43,7 +43,7 @@
       position: absolute;
       width: 30px;
       height: 30px;
-      background-image: url("../../images/icon-pin.svg");
+      background-image: url('../../images/icon-pin.svg');
       background-repeat: no-repeat;
       background-size: 10px 13px;
       background-position: center;
@@ -54,14 +54,14 @@
     &_pined {
       background-color: $GREEN;
       &::after {
-        background-image: url("../../images/icon-pin-white.svg");
+        background-image: url('../../images/icon-pin-white.svg');
       }
     }
 
     .movies_type_saved & {
       &::after {
         background-size: 12px;
-        background-image: url("../../images/icon-cross.svg");
+        background-image: url('../../images/icon-cross.svg');
       }
     }
   }

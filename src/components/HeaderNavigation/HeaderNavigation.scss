@@ -1,8 +1,12 @@
 @import '../../styles/variables';
 
 @keyframes showLeft {
-  from {left:-100%;}
-  to {left:0;}
+  from {
+    left: -100%;
+  }
+  to {
+    left: 0;
+  }
 }
 
 .navigation {
@@ -10,14 +14,12 @@
   position: relative;
   background-color: transparent;
 
-  @media screen and (min-width: $DESKTOP){
+  @media screen and (min-width: $DESKTOP) {
     justify-content: end;
   }
 
   &_type_menu {
-    @media screen
-      and (min-width: $MOBILE)
-      and (max-width: $DESKTOP_WITHOUT){
+    @media screen and (min-width: $MOBILE) and (max-width: $DESKTOP_WITHOUT) {
       width: 100%;
       min-height: 100vh;
       position: fixed;
@@ -33,16 +35,14 @@
     display: grid;
     width: 100%;
 
-    @media screen and (min-width: $DESKTOP){
+    @media screen and (min-width: $DESKTOP) {
       grid-auto-flow: column;
       justify-items: end;
       align-items: center;
     }
 
     &_type_menu {
-      @media screen
-      and (min-width: $MOBILE)
-      and (max-width: $DESKTOP_WITHOUT){
+      @media screen and (min-width: $MOBILE) and (max-width: $DESKTOP_WITHOUT) {
         position: fixed;
         top: 0;
         right: 0;
@@ -50,9 +50,7 @@
         min-height: 100vh;
         background-color: white;
       }
-      @media screen
-        and (min-width: $PAD)
-        and (max-width: $DESKTOP_WITHOUT){
+      @media screen and (min-width: $PAD) and (max-width: $DESKTOP_WITHOUT) {
         width: 67.7%;
       }
     }
@@ -65,11 +63,11 @@
     align-content: start;
     justify-items: center;
 
-    @media screen and (min-width: $PAD){
+    @media screen and (min-width: $PAD) {
       row-gap: 28px;
     }
 
-    @media screen and (min-width: $DESKTOP){
+    @media screen and (min-width: $DESKTOP) {
       padding-top: 0;
       grid-auto-flow: column;
       justify-items: end;
@@ -77,9 +75,7 @@
     }
 
     &_invisibled {
-      @media screen
-      and (min-width: $MOBILE)
-      and (max-width: $DESKTOP_WITHOUT){
+      @media screen and (min-width: $MOBILE) and (max-width: $DESKTOP_WITHOUT) {
         display: none;
       }
     }
@@ -90,45 +86,48 @@
     text-align: center;
     @include font_text(18px, 22px, black, 500);
 
-    @media screen and (min-width: $DESKTOP){
+    @media screen and (min-width: $DESKTOP) {
       @include font_text(14px, 18px, black);
     }
 
     &_type_main {
-      @media screen and (min-width: $DESKTOP){
+      @media screen and (min-width: $DESKTOP) {
         color: white;
       }
     }
 
     &_type_active {
-      @media screen
-        and (min-width: $MOBILE)
-        and (max-width: $DESKTOP_WITHOUT){
+      color: $GREEN;
+      @media screen and (min-width: $MOBILE) and (max-width: $DESKTOP_WITHOUT) {
         &::after {
-          content: "";
+          content: '';
           position: absolute;
           bottom: -8px;
           left: 0;
           width: 100%;
           height: 2px;
-          background-color: black;
+          background-color: $GREEN;
 
-          @media screen and (min-width: $PAD){
+          @media screen and (min-width: $PAD) {
             bottom: -4px;
           }
         }
       }
 
-      @media screen and (min-width: $DESKTOP){
+      @media screen and (min-width: $DESKTOP) {
         font-weight: 500;
       }
     }
 
     &_type_home {
-      @media screen
-        and (min-width: $DESKTOP) {
+      @media screen and (min-width: $DESKTOP) {
         display: none;
       }
+    }
+
+    &:hover {
+      opacity: 1;
+      color: $GREEN;
     }
   }
 
@@ -145,18 +144,22 @@
     box-sizing: border-box;
     border-radius: 40px;
 
-    @media screen and (min-width: $PAD){
+    &:hover {
+      opacity: 1;
+      background-color: $GREEN;
+      color: white;
+    }
+
+    @media screen and (min-width: $PAD) {
       margin-bottom: 93px;
     }
 
-    @media screen and (min-width: $DESKTOP){
+    @media screen and (min-width: $DESKTOP) {
       margin: 0 0 0 50px;
       justify-items: end;
     }
     &_invisibled {
-      @media screen
-      and (min-width: $MOBILE)
-      and (max-width: $DESKTOP_WITHOUT){
+      @media screen and (min-width: $MOBILE) and (max-width: $DESKTOP_WITHOUT) {
         display: none;
       }
     }
@@ -168,7 +171,7 @@
       height: 26px;
       top: 3px;
       right: 3px;
-      background-color: #F9F9F9;
+      background-color: #f9f9f9;
       background-image: url(../../images/icon-man.svg);
       background-size: 10.38px 10.68px;
       background-position: center;
@@ -188,12 +191,12 @@
     background-repeat: no-repeat;
     border: none;
 
-    @media screen and (min-width: $PAD){
+    @media screen and (min-width: $PAD) {
       width: 44px;
       height: 44px;
     }
 
-    @media screen and (min-width: $DESKTOP){
+    @media screen and (min-width: $DESKTOP) {
       display: none;
     }
 
@@ -204,7 +207,7 @@
       background-size: 30px;
       background-position: center;
 
-      @media screen and (min-width: $PAD){
+      @media screen and (min-width: $PAD) {
         width: 74px;
         height: 74px;
       }

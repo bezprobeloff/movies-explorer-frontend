@@ -49,7 +49,7 @@ const MoviesCard = ({ movie, savedMovies, pinMovie, unpinMovie }) => {
         <p className='movies__card-duration'>{duration}</p>
         <button className={classButton} onClick={handleButton} />
       </div>
-      <a href={trailerLink} className='movies__card-trailerLink'>
+      <a href={trailerLink} className='link movies__card-trailerLink'>
         <img className='movies__card-image' src={urlImage} alt='Фото' />
       </a>
     </li>
