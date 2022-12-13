@@ -1,11 +1,11 @@
-@import "./vendor/normalize.css";
-@import "./vendor/fonts/font.css";
+@import './vendor/normalize.css';
+@import './vendor/fonts/font.css';
 
 .page {
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   color: #000000;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
@@ -16,10 +16,11 @@
 
 .link {
   text-decoration: none;
+  transition: 2s;
 
   &:hover {
     cursor: pointer;
-    opacity: .2;
+    opacity: 0.2;
     transition: 2s;
   }
 }

@@ -13,7 +13,7 @@
     justify-content: center;
     box-sizing: border-box;
 
-    @media screen  and (min-width: $PAD){
+    @media screen and (min-width: $PAD) {
       padding: 0 44px 0;
     }
 
@@ -43,7 +43,7 @@
     width: 210px;
     height: 206px;
 
-    @media screen and (min-width: $PAD){
+    @media screen and (min-width: $PAD) {
       margin-top: 140px;
       width: 310px;
       height: 304px;
@@ -81,11 +81,11 @@
     @include font_text(13px, 16px, rgba(white, 0.5));
     text-align: center;
 
-    @media screen and (min-width: $PAD){
+    @media screen and (min-width: $PAD) {
       max-width: 260px;
     }
 
-    @media screen and (min-width: $DESKTOP){
+    @media screen and (min-width: $DESKTOP) {
       margin-top: 36px;
       padding: 0;
       max-width: 310px;
@@ -103,12 +103,17 @@
     border-radius: 3px;
     text-align: center;
 
-    @media screen and (min-width: $PAD){
+    &:hover {
+      opacity: 1;
+      background-color: $GREEN;
+    }
+
+    @media screen and (min-width: $PAD) {
       margin-top: 89px;
       margin-bottom: 75px;
     }
 
-    @media screen and (min-width: $DESKTOP){
+    @media screen and (min-width: $DESKTOP) {
       align-self: end;
       margin-top: 0px;
       margin-bottom: 25px;
