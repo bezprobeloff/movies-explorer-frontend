@@ -110,12 +110,21 @@
   }
 
   &__link-repo {
-    padding-top: 40px;
-    @include font_text(14px, 17px, black, 500);
+    width: fit-content;
+    margin-top: 40px;
+    padding: 10px 40px;
+    border-radius: 5px;
+    background-color: black;
+    @include font_text(14px, 17px, white, 500);
+
+    &:hover {
+      background-color: $GREEN;
+      opacity: 1;
+    }
 
     @media screen  and (min-width: $PAD){
       align-self: end;
-      padding-top: 10px;
+      margin-top: 10px;
     }
   }
 }
