@@ -5,10 +5,6 @@
     <img alt="Made by: Bezprobeloff" src="https://img.shields.io/badge/made%20by-Bezprobeloff-blue" />
 </p>
 
-Ссылка на deploy __Movies__: https://movies.bezprobeloff.nomoredomains.icu/
-
-Ссылка на макет: https://disk.yandex.ru/d/JwWBwVcRhOX10A
-
 
 https://user-images.githubusercontent.com/44836223/208670955-e5c2a207-4a1d-4f2e-b132-8b54d08fa85f.mp4
 
@@ -18,7 +14,6 @@ https://user-images.githubusercontent.com/44836223/208670955-e5c2a207-4a1d-4f2e-
 Проект приложения для просмотра информации о фильмах, который можно посмотреть в режиме мобильного, планшета и десктопа.
 На каждом устройстве сайт адаптивно меняется для удобства и читабельности.
 
-Синхронизируем данные по api - https://api.movies.bezprobeloff.nomoredomains.icu/ .
 
 Исходный код бекенда и документация API на GitHub -  **[Movies (Backend)](https://github.com/bezprobeloff/movies-explorer-api)**
 
